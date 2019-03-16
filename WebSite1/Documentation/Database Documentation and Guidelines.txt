@@ -1,0 +1,36 @@
+Documentation&Guideline for database:
+
+For text storage use nvarchar(n) (for multi language support).
+// data types: text, ntext will become obsolete in next versions of MySQL, DO NOT USE!
+
+For login/password feature use varchar(n).
+
+general naming guideline:
+
+primary key in table - id, data type - int
+
+example:	user --table name
+				id	int	--primary key
+				...
+
+table, column:
+	lower case
+	singular
+	no space (us CamelCase instead)
+	no numbers
+	
+	examples: 	user	--table name
+					name	--table column
+					surname	--table column
+					age		--table column
+	
+	
+foreign key:
+	FK_[table name where fk is]_to_[table where key belongs to]
+	
+	examples: FK_user_to_project
+	
+	
+	
+
+//Made by P.Ł.
