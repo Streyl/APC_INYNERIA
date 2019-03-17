@@ -6,12 +6,11 @@ background-color: green;
 float: inherit;
 }
 #leftContent {
-width:15%;
-min-height:200px;
-height:auto;
+    width: 15%;
+    min-height: 200px;
+    height: auto;
     background-color: blue;
     float: left;
-
 }
 #mainContent {
 
@@ -20,8 +19,7 @@ height:auto;
   height: auto;
     background-color: red;
     float:right;
-
-
+    clear: both
 
 }
 

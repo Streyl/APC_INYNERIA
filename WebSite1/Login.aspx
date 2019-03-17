@@ -30,7 +30,15 @@
             <br />
             <br />
             <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
-            <input id="tbPassword" type="password" /></div>
+            <asp:TextBox ID="tbPassword" runat="server"></asp:TextBox>
+            <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lblWrongSignIn" runat="server" Text="Wrong Login or/and Password" Visible="False"></asp:Label>
+            <br />
+            <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="bConfirm" runat="server" OnClick="bConfirm_Click" Text="Confirm" />
+            </div>
 
         <div id="leftContent">
          </div>
