@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DB" Class="LinqDataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DB.mdf;Integrated Security=True;Connect Timeout=30" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.project" Member="projects">
+    <Type Name="project">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="creatorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="creationDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="startDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="endDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
+      <Column Name="remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="project_task" Member="tasks" ThisKey="id" OtherKey="projectID" Type="task" />
+      <Association Name="user_project" Member="user" ThisKey="creatorID" OtherKey="id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[user]" Member="users">
+    <Type Name="user">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="login" Type="System.String" DbType="VarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="[level]" Member="level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="accountStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="user_project" Member="projects" ThisKey="id" OtherKey="creatorID" Type="project" />
+      <Association Name="user_task" Member="tasks" ThisKey="id" OtherKey="leaderID" Type="task" />
+      <Association Name="user_taskAssignment" Member="taskAssignments" ThisKey="id" OtherKey="userID" Type="taskAssignment" />
+    </Type>
+  </Table>
+  <Table Name="dbo.task" Member="tasks">
+    <Type Name="task">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="leaderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="projectID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="task_taskAssignment" Member="taskAssignments" ThisKey="id" OtherKey="taskID" Type="taskAssignment" />
+      <Association Name="project_task" Member="project" ThisKey="projectID" OtherKey="id" Type="project" IsForeignKey="true" />
+      <Association Name="user_task" Member="user" ThisKey="leaderID" OtherKey="id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.taskAssignment" Member="taskAssignments">
+    <Type Name="taskAssignment">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="taskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="task_taskAssignment" Member="task" ThisKey="taskID" OtherKey="id" Type="task" IsForeignKey="true" />
+      <Association Name="user_taskAssignment" Member="user" ThisKey="userID" OtherKey="id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
