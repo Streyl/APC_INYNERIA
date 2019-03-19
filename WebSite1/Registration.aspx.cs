@@ -57,6 +57,6 @@ public partial class Registration : System.Web.UI.Page
             //    sqlCmd.ExecuteNonQuery();
             AddNewUser();
         }
-        Response.Redirect("default.aspx");
+        Response.Redirect("login.aspx");
     }
 }
