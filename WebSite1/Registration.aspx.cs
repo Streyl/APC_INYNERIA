@@ -9,7 +9,9 @@ using System.Web.UI.WebControls;
 
 public partial class Registration : System.Web.UI.Page
 {
-    
+    string connectionString = @"D:\Учись\Inzyneria opragromowania\APC_INYNERIA-master (1)\APC_INYNERIA-master\WebSite1\App_Data\DB.mdf";
+
+
     protected void Page_Load(object sender, EventArgs e)
     {
         
@@ -24,7 +26,7 @@ public partial class Registration : System.Web.UI.Page
             lbErrorMessage.Text = "Passwords do not match";
             else
             {
-            using (SqlConnection sqlCon = new SqlConnection())
+            using (SqlConnection sqlCon = new SqlConnection(connectionString))
             {
                 sqlCon.Open();
                 SqlCommand sqlCmd = new SqlCommand("UserAdd", sqlCon);
