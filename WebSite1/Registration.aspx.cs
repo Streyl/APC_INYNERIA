@@ -10,12 +10,17 @@ using System.Web.UI.WebControls;
 
 public partial class Registration : System.Web.UI.Page
 {
-    //string connectionString = @"D:\Учись\Inzyneria opragromowania\APC_INYNERIA-master (1)\APC_INYNERIA-master\WebSite1\App_Data\DB.mdf";
-
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if(!IsPostBack)
+        {
+            Clear();
+        }
+        else
+        {
+            Clear();
+        }
     }
     private void AddNewUser()
     {
@@ -23,7 +28,7 @@ public partial class Registration : System.Web.UI.Page
         {
             user objUser = new user();
             // fields to be insert
-            //objUser.id++;
+            //objUser.id=+0;
             objUser.name = tbName.Text;
             objUser.surname = tbSurname.Text;
             objUser.login = tbLogin.Text;
@@ -39,24 +44,28 @@ public partial class Registration : System.Web.UI.Page
     protected void btSubmit_Click(object sender, EventArgs e)
     {
         if (tbLogin.Text == "" || tbPassword.Text == "")
-            lbErrorMessage.Text = "U have to fill this";
+        {
+            lbErrorMessage.Text = "U have to fill Login and Password columns";
+        }
         else if (tbPassword.Text != tbConfirmPassword.Text)
+        {
             lbErrorMessage.Text = "Passwords do not match";
+        }
         else
         {
-            //using (SqlConnection sqlCon = new SqlConnection(connectionString))
-            //{
-            //    sqlCon.Open();
-            //    SqlCommand sqlCmd = new SqlCommand("UserAdd", sqlCon);
-            //    sqlCmd.CommandType = CommandType.StoredProcedure;
-            //    sqlCmd.Parameters.AddWithValue("@id", Convert.ToInt32(hfid.Value == "" ? "0" : hfid.Value));
-            //    sqlCmd.Parameters.AddWithValue("@name", tbName.Text.Trim());
-            //    sqlCmd.Parameters.AddWithValue("@surname", tbSurname.Text.Trim());
-            //    sqlCmd.Parameters.AddWithValue("@login", tbLogin.Text.Trim());
-            //    sqlCmd.Parameters.AddWithValue("@password", tbPassword.Text.Trim());
-            //    sqlCmd.ExecuteNonQuery();
             AddNewUser();
+            Response.Redirect("login.aspx");
         }
-        Response.Redirect("login.aspx");
+    }
+
+    void Clear()
+    {
+        tbName.Text = tbSurname.Text = tbLogin.Text = tbPassword.Text = tbConfirmPassword.Text = "";
+        hfid.Value = "";
+        lbErrorMessage.Text = "";
     }
 }
+//Problems:
+//Doesnt adds id right;
+//mandatory fields to fill and matched passwords
+//
