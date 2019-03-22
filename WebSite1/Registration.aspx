@@ -8,26 +8,17 @@
     <title>
         Registration
     </title>
-    <style type ="text/css">
-        #register{
-            margin-left: 0px;
+    <style type="text/css">
+        #form1 {
+            height: 586px;
+            width: 681px;
         }
-
     </style>
 </head>
-<body>
-    <form id="form1" runat="server">
-        <div id="parent">
-            <div id="topContent">
-            </div>
-        
-            <div id="mainContent">
-
-
+<body style="height: 347px">
+    <form id="registration" runat="server"> <%--form 1--%>
                 <h3>Registration of the new user!</h3>
 
-                <div>
-                <asp:HiddenField ID="hfid" runat="server" />
                 <table>
                     <tr>
                         <td>
@@ -35,6 +26,7 @@
                         </td>
                         <td colspan="2">
                             <asp:TextBox ID="tbName" runat="server" />
+
                         </td>
                     </tr>
                     <tr>
@@ -43,6 +35,7 @@
                         </td>
                         <td colspan="2">
                         <asp:TextBox ID="tbSurname" runat="server" />
+
                         </td>
                     </tr>
                     <tr>
@@ -56,7 +49,8 @@
                         </td>
                         <td colspan="2">
                         <asp:TextBox ID="tbLogin" runat="server" />
-                        <asp:Label Text="*" runat="server" ForeColor="White" />
+                            &nbsp
+                            <asp:Label ID="lbLongLogin" runat="server" Text="Max - 16 charachters"  Visible="True" ></asp:Label>
                         </td>
                     </tr>
                     <tr>
@@ -65,7 +59,9 @@
                         </td>
                         <td colspan="2">
                         <asp:TextBox ID="tbPassword" runat="server" TextMode="Password" />
-                        <asp:Label Text="*" runat="server" ForeColor="White" />
+                            &nbsp
+                            <asp:Label ID="Label1" runat="server" Text="Min - 6 ; Max - 32; At least [A-Z] letter "  Visible="True" ></asp:Label>
+
                         </td>
                     </tr>
                     <tr>
@@ -85,17 +81,10 @@
                     <tr>
                         <td></td>
                         <td colspan="2">
-                        <asp:Label Text="" ID="lbErrorMessage" runat="server" ForeColor="White" />
+                        <asp:Label Text="" ID="lbErrorMessage" runat="server" ForeColor="Red" Visible="True" />
                         </td>
                     </tr>
                 </table>
-            </div>
-        </div>
-            <div id="leftContent">
-             </div>
-        
-        <div id="footerContent">
-        </div>
     </form>
 </body>
 </html>
