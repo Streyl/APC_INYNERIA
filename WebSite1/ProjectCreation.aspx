@@ -1,19 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ProjectCreation.aspx.cs" Inherits="ProjectCreation" %>
+﻿<%@ Page Title="ProjectCreation" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="ProjectCreation.aspx.cs" Inherits="ProjectCreation" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <style type="text/css">
-        #form1 {
-            height: 586px;
-            width: 681px;
-        }
-    </style>
-</head>
-<body style="height: 347px">
-    <form id="form1" runat="server">
+<asp:Content ID="BodyProjectCreation" ContentPlaceHolderID="MainContent" runat="server">
         <asp:Label ID="lblName" runat="server" Text="Name:"></asp:Label>
         <br />
         <asp:TextBox ID="txtName" runat="server" MaxLength="50" TabIndex="1"></asp:TextBox>
@@ -41,6 +29,4 @@
         <br />
         <br />
         <asp:Button ID="btnCreateProject" runat="server" OnClick="btnCreateProject_Click" Text="Create Project" />
-    </form>
-</body>
-</html>
+  </asp:Content>

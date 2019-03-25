@@ -1,0 +1,143 @@
+﻿How to use MasterPage.master in your site.
+
+MasterPage.master contain layout, the look of the website and menu
+funcionality which will be used on every page. 
+Only in this page you can change something (the menu, the upper menu,
+the footer, the black bar) which isn`t your page funcionality.
+So if you want for example change button visability from menu you must do it on this page. 
+
+
+1. How to connect page with MasterPage.Master
+	1.1 Blank Page
+	1.2 Page with content
+3 Where to add pages content
+4 How to create new Content Place Holder
+5. How to name
+6. Creator
+
+1.How to connect your pages with MasterPage.Master.
+
+	1.1. 1FOR BLANK PAGE
+
+		1.1.1 First delete all  lines of code from pageName.aspx
+			1.1.2. Add this line to pageName.aspx
+
+
+				<%@ Page Title="PAGETITLE" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="pageName.aspx.cs" Inherits="pageName" %>
+
+				<asp:Content ID="IDPageBody" ContentPlaceHolderID="MainContent" runat="server">
+
+						//YOUR PAGE MAINE CONTETN
+
+ 				</asp:Content>
+
+				<asp:Content ID="IdPAGEBody" ContentPlaceHolderID="NotLogInContent" runat="server">
+
+				//YOUR PAGE NOT LOG IN PAGE CONTENT
+
+ 				</asp:Content>
+
+
+			1.1.3. END
+
+	1.2 FOR PAGE WITH ALREADY HAVE CONTENT
+
+		1.2.1. Delete all unnesesary line (all lines of code that are
+			   not part of the functionalityof your site) like: 
+
+			<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TEST.aspx.cs" Inherits="TEST" %>
+
+			<!DOCTYPE html>
+
+			<html xmlns="http://www.w3.org/1999/xhtml">
+			<head runat="server">
+    				<title></title>
+			</head>
+			<body>
+    				<form id="form1" runat="server">
+        				<div>
+        				</div>
+    			</form>
+			</body>
+			</html>
+
+			(If you are using  for example <div> for something then you may not delete them but
+			preferable just delete everything which is not necessary in yours page functionality) 
+
+
+		1.2.2. Add this line to pageName.aspx
+			<%@ Page Title="PAGETITLE" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="pageName.aspx.cs" Inherits="pageName" %>
+
+			<asp:Content ID="IDPageBody" ContentPlaceHolderID="MainContent" runat="server">
+
+			//YOUR PAGE MAINE CONTETN
+
+ 			</asp:Content>
+
+			<asp:Content ID="IdPAGE" ContentPlaceHolderID="NotLogInContent" runat="server">
+
+			//YOUR PAGE NOT LOG IN PAGE CONTENT
+
+ 			</asp:Content>
+		1.2.3. END
+
+
+3. Where to add page content
+
+	Between:
+		<asp:Content ID="IDPageBody" ContentPlaceHolderID="MainContent" runat="server">
+
+ 		</asp:Content>
+
+	you should add yours page content which will be see when users is already log in.
+
+	If you want to create alternative page content for users who is not log in use:
+
+		<asp:Content ID="IDPageBody" ContentPlaceHolderID="NotLogInContent" runat="server">
+
+ 		</asp:Content>
+
+
+4. How to create new  Content Place Holder
+
+
+	If you want add new  Content Place Holder  you must go to MasterPage.master and find comment 	
+		<!-- PAGE CONTENT--> 
+		...
+		<!-- END PAGE CONTENT -->
+
+	Between this is <div></div> and in this you must add:
+
+								<asp:ContentPlaceHolder id="YourContentId" runat="server">
+        
+								</asp:ContentPlaceHolder>
+
+	Now you can go back to yours page and add:
+
+		<asp:Content ID="IDPageBody" ContentPlaceHolderID="MainContent" runat="server">
+
+		//Yours content
+
+		</asp:Content>
+
+5. How to name:
+
+Content ID: 
+	preffix:Body
+	
+  	BodyPageName
+	BodyTest
+	BodyDefault
+ContentPlaceHolderID: 
+	suffix:Content
+
+ 	NameContent
+	TestContent
+	MainContent
+Page Title: 
+	-Short(max two word)
+	-Easy to understand what it contain
+	-without special chars
+
+6. Creator
+Created by: Jan Skrok

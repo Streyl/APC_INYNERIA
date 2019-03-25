@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="Content/bootstrap.css" type="text/css"/>  
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+</head>
+<body>
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+
+    <form id="form1" runat="server">
+    
+
+
+        <div class="container-fluid  ">
+
+            <div class="row">
+                <!-- UPER MENU -->
+                <div class="col-md-12 w-75 p-3" style="background-color: blue">
+
+                    <asp:Button ID="bAbout" runat="server" Text="About" />
+                    <asp:Button ID="bContact" runat="server" Text="Contact" />
+                    <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" />
+                    <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" />
+                </div>
+                <!-- END UPER MENU -->
+            </div>
+            <!-- BLACK BAR -->
+            <div class="row">
+                 <div class="col-md-12" style="background-color: black" >
+                   blank
+                 </div>
+            </div>
+            <!-- END BLACK BAR -->
+
+                <div class="row ">
+                    <!-- LEFT MENU -->
+                    <div class="col-md-1"  style="background-color: red">
+                        
+                            <br />
+                            <asp:Panel ID="pnlLeftMenu" runat="server" Height="247px" Width="215px">
+                                <asp:Button ID="bProjectCreation" runat="server" Text="New Project" OnClick="bProjectCreation_Click" />
+                                <br />
+                                <asp:Button ID="bMyProjects" runat="server" Text="My Projects" OnClick="bMyProjects_Click" />
+                                <br />
+                                <asp:Button ID="bDefault" runat="server" Text="Default" OnClick="bDefault_Click" />
+                            </asp:Panel>
+                            <br />
+                        
+                    </div>
+                    <!-- END LEFT MENU -->
+
+                <!-- PAGE CONTENT-->
+                <div class="col-md-11" style="background-color: orange;">  
+                    
+
+                            <asp:ContentPlaceHolder id="MainContent" runat="server">
+        
+                            </asp:ContentPlaceHolder>
+                            <asp:ContentPlaceHolder id="NotLogInContent" runat="server">
+        
+                            </asp:ContentPlaceHolder>
+                   
+                </div> 
+                <!-- END PAGE CONTENT -->
+            </div>
+            <div class="row">
+                <!-- FOOTER -->
+            <div class="col-md-12" style="background-color: green">
+            FOOTER FOOTER FOOTER 
+            </div>
+                <!-- END FOOTER-->
+            </div>
+
+
+       </div>
+
+    </form>
+</body>
+</html>

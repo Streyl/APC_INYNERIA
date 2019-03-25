@@ -1,22 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Registration.aspx.cs" Inherits="Registration" %>
+﻿
+<%@ Page Title="Registration" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Registration.aspx.cs" Inherits="Registration" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyRegistration" ContentPlaceHolderID="NotLogInContent" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <link rel="stylesheet" href="Style.css" type="text/css"/> 
-    <title>
-        Registration
-    </title>
-    <style type="text/css">
-        #form1 {
-            height: 586px;
-            width: 681px;
-        }
-    </style>
-</head>
-<body style="height: 347px">
-    <form id="registration" runat="server"> <%--form 1--%>
                 <h3>Registration of the new user!</h3>
 
                 <table>
@@ -85,6 +71,4 @@
                         </td>
                     </tr>
                 </table>
-    </form>
-</body>
-</html>
+</asp:Content>

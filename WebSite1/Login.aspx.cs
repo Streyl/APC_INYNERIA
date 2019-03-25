@@ -11,7 +11,9 @@ public partial class Login : System.Web.UI.Page
 
     LinqDataClassesDataContext BaseDB = new LinqDataClassesDataContext();
     public static bool isLogIn;
-    bool isUserExist(string userLogin, string userPassword)//if user is already log in is true
+
+
+    bool IsUserExist(string userLogin, string userPassword)//if user is already log in is true
     {
         var q = from p in BaseDB.users
                 where p.login == tbLogin.Text
@@ -29,16 +31,6 @@ public partial class Login : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (isLogIn)
-        {
-            pnlLogIn.Visible = false;
-            bLogout.Text = "Logout";
-        }
-        else
-        {
-            pnlLogIn.Visible = true;
-            bLogout.Text = "Not Log In";
-        }
     }
 
    
@@ -52,28 +44,17 @@ public partial class Login : System.Web.UI.Page
 
     protected void bConfirm_Click(object sender, EventArgs e)
     {
-        if (isUserExist(tbLogin.Text, tbPassword.Text))
+        if (IsUserExist(tbLogin.Text, tbPassword.Text))
         {
-            isLogIn = true;
-
-            //Response.Redirect("default.aspx"); //change only for see how Login.aspx page look when someone is sign in now 
+            Session["UserLogIn"] = tbLogin.Text;
+            Response.Redirect("default.aspx"); 
         }
         else
         {
-            isLogIn = false;
+
             lblWrongSignIn.Visible = true;
         }
-        //If User is log in he dosnt see Panel to LogIn 
-        if (isLogIn)
-        {
-            pnlLogIn.Visible = false;
-            bLogout.Text = "Logout";
-        }
-        else
-        {
-            pnlLogIn.Visible = true;
-            bLogout.Text = "Not Log In";
-        }
+
     }
 
 
@@ -85,9 +66,6 @@ public partial class Login : System.Web.UI.Page
 
     protected void bLogout_Click(object sender, EventArgs e)
     {
-        if (isLogIn)
-        {
-            isLogIn = false;
-        }
+      
     }
 }

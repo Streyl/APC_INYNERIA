@@ -1,33 +1,17 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="MyProjects.aspx.cs" Inherits="MyProjects" %>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-
-    <link rel="stylesheet" href="Style.css" type="text/css"/>  
-
-    <title>My Projects</title>
-    
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div id="parent">
-        <div id="topContent">
-        </div>
-             <div id="mainContent">
-                 </div>
-
-        <div id="leftContent">
-         </div>
-        </div>
-<div id="footerContent">
-            </div>
-
-    </form>
-
-        
+﻿<%@ Page Title="MyProjects" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="MyProjects.aspx.cs" Inherits="MyProjects" %>
 
 
-    </body>
-</html>
+<asp:Content ID="BodyMyProjects" ContentPlaceHolderID="MainContent" runat="server">
+
+        Here will be list of projects 
+
+     </asp:Content>
+
+
+ <asp:Content ID="Content1" ContentPlaceHolderID="NotLogInContent" runat="server">
+
+        Here will be list of projects but you will see it only if you log in on your account
+
+
+ </asp:Content>
+

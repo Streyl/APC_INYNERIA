@@ -1,27 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Title="Default" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-        <link rel="stylesheet" href="Style.css" type="text/css"/>  
-    <title>Default</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div id="parent">
-        <div id="topContent">
-        </div>
-        
-        <div id="mainContent">
-            </div>
+<asp:Content ID="BodyDefault" ContentPlaceHolderID="MainContent" runat="server">
 
-        <div id="leftContent">
-         </div>
-        </div>
-<div id="footerContent">
-            </div>
+     Just Default Page 
 
-    </form>
-</body>
-</html>
+
+
+ </asp:Content>
+

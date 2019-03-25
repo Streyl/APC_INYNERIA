@@ -5,14 +5,14 @@ height:50px;
 background-color: green;
 float: inherit;
 }
-#leftContent {
+#col1 {
     width: 15%;
     min-height: 200px;
     height: auto;
     background-color: blue;
     float: left;
 }
-#mainContent {
+#col2 {
 
   width:85%;
   min-height:200px ;
