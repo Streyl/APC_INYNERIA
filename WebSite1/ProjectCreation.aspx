@@ -5,14 +5,17 @@
         <asp:Label ID="lblName" runat="server" Text="Name:"></asp:Label>
         <br />
         <asp:TextBox ID="txtName" runat="server" MaxLength="50" TabIndex="1"></asp:TextBox>
+        <asp:Label ID="lblNameError" runat="server" ForeColor="Red" Visible="False"></asp:Label>
         <br />
         <asp:Label ID="lblStartDate" runat="server" Text="Start date:"></asp:Label>
         <br />
         <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date" TabIndex="2"></asp:TextBox>
+        <asp:Label ID="lblStartDateError" runat="server" ForeColor="Red" Visible="False"></asp:Label>
         <br />
         <asp:Label ID="lblEndDate" runat="server" Text="End date:"></asp:Label>
         <br />
         <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date" TabIndex="3"></asp:TextBox>
+        <asp:Label ID="lblEndDateError" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <asp:Label ID="lblStatus" runat="server" Text="Status:"></asp:Label>
         <br />
@@ -29,4 +32,7 @@
         <br />
         <br />
         <asp:Button ID="btnCreateProject" runat="server" OnClick="btnCreateProject_Click" Text="Create Project" />
+        <br />
+        <asp:Label ID="lblProjectCreationSucces" runat="server" Text="Project succesfully created!" Visible="False"></asp:Label>
+        <br />
   </asp:Content>
