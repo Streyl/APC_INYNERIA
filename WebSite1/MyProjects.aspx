@@ -3,14 +3,14 @@
 
 <asp:Content ID="BodyMyProjects" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="MyProjectsRow">
-        <div class="MyProjectsColumn">
+    <div class="MyProjectsRow" >
+        <div class="MyProjectsColumn" style="display: inline-block;">
                 <asp:ListBox ID="lbUserProjects" runat="server" Width="195px" Height="169px" OnSelectedIndexChanged="lbUserProjects_SelectedIndexChanged">
                 </asp:ListBox>
                 <br />
         </div>
 
-        <div class="MyProjectsColumn">
+        <div class="MyProjectsColumn" style="display: inline-block;">
             <asp:Label ID="lblProjectName" runat="server" Text="Name:"></asp:Label>
             <br />
             <asp:Label ID="lblProjectCreator" runat="server" Text="Creator:"></asp:Label>

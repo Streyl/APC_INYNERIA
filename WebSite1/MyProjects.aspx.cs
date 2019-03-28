@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
 public partial class MyProjects : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -16,9 +17,9 @@ public partial class MyProjects : System.Web.UI.Page
                       select u.id).First();
 
 
-        var userProjects = from p in db.projects select p.name;
-
-        lbUserProjects.DataSource = userProjects;
+        //var userProjects = from p in db.projects select p.name;
+        //lbUserProjects.DataValueField = "name";
+        lbUserProjects.DataSource = db.projects;
         lbUserProjects.DataBind();
     }
 
