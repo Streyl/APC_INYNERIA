@@ -1,0 +1,31 @@
+﻿
+#topContent{
+width:100%;
+height:50px;
+background-color: green;
+float: inherit;
+}
+#col1 {
+    width: 15%;
+    min-height: 200px;
+    height: auto;
+    background-color: blue;
+    float: left;
+}
+#col2 {
+
+  width:85%;
+  min-height:200px ;
+  height: auto;
+    background-color: red;
+    float:right;
+    clear: both
+
+}
+
+#footerContent{
+    height:16px;
+    clear:both;
+    background-color: black;
+
+}
