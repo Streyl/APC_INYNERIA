@@ -12,13 +12,14 @@
                 &nbsp;<br />
                 <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
                 &nbsp;&nbsp;
-                <asp:TextBox ID="tbPassword" runat="server" AutoCompleteType="Disabled" style="margin-top: 9px" TextMode="Password"></asp:TextBox>
+                <asp:TextBox ID="tbPassword" runat="server" AutoCompleteType="Disabled" style="margin-top: 9px" TextMode="Password" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
                 <br />
                 <asp:Label ID="lblWrongSignIn" runat="server" Text="Wrong Login or/and Password" Visible="False" Height="25px" Width="300px"></asp:Label>
                
                 <asp:Button ID="bConfirm" runat="server" OnClick="bConfirm_Click" Text="Confirm" />
             </asp:panel>
 
+    
     </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
