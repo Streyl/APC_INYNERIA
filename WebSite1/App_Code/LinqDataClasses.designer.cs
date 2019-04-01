@@ -109,8 +109,11 @@ public partial class LinqDataClassesDataContext : System.Data.Linq.DataContext
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.project")]
 public partial class project : INotifyPropertyChanging, INotifyPropertyChanged
 {
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+    public override string ToString()
+    {
+        return name + creationDate.ToShortDateString();
+    }
+    private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
 	private int _id;
 	
