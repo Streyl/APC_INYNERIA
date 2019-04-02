@@ -19,20 +19,23 @@
     <form id="form1" runat="server">
     
 
-
-        <div class="container-fluid  ">
-
-            <div class="row">
+        
+            <nav class="navbar navbar-dark bg-dark">
                 <!-- UPER MENU -->
-                <div class="col-md-12 w-75 p-3" style="background-color: blue">
-
-                    <asp:Button ID="bAbout" runat="server" Text="About" />
-                    <asp:Button ID="bContact" runat="server" Text="Contact" />
-                    <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" />
-                    <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" />
-                </div>
+                <div class="col-2"> </div>
+                <div class="col-8">
+                <a ID="bAbout" role="button" class="btn btn-primary" href="Default.aspx">About</a>
+                <a ID="bContact" type="button" class="btn btn-primary" href="Default.aspx">Contact</a>
+                </div> 
+                    <div class="col-1 d-flex justify-content-end">
+                <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" class="btn btn-primary" BorderColor="Lavender" />
+                <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" class="btn btn-primary" BorderColor="Lavender"/>
+                 <asp:Button ID="bAdminManageUsers" runat="server" Text="Manage Users"  class="btn btn-primary" BorderColor="Lavender" OnClick="bAdminManageUsers_Click" Visible="False"/>
+                   </div>
                 <!-- END UPER MENU -->
-            </div>
+            </nav>
+        <div class="container-fluid">
+
             <!-- BLACK BAR -->
             <div class="row">
                  <div class="col-md-12" style="background-color: black" >
@@ -40,48 +43,54 @@
                  </div>
             </div>
             <!-- END BLACK BAR -->
-
+  <!-- LEFT MENU -->
                 <div class="row ">
-                    <!-- LEFT MENU -->
-                    <div class="col-md-1"  style="background-color: red">
+
+                    <div class="col-2 "> <asp:Panel ID="pnlLeftMenu" runat="server" Height="247px" Width="215px">
+                        <div class="list-group" id="list=tab" role="tablist">
+                           
+                            <a class="list-group-item list-group-item-action tablist" id="bDefault"   href="Default.aspx" role="tab" aria-controls="default">Default</a>
+                            <a class="list-group-item list-group-item-action " id="bMyProjects"  href="MyProjects.aspx" role="tab" >My Projects</a>
+                            <a class="list-group-item list-group-item-action"  id="bProjectCreation"  href="ProjectCreation.aspx" type="button" role="tab" >New Project</a>
+                            
+                       </div> </asp:Panel>
+                        </div>
+                    <div class="jumbotron col-8"  >
                         
-                            <br />
-                            <asp:Panel ID="pnlLeftMenu" runat="server" Height="247px" Width="215px">
-                                <asp:Button ID="bProjectCreation" runat="server" Text="New Project" OnClick="bProjectCreation_Click" />
-                                <br />
-                                <asp:Button ID="bMyProjects" runat="server" Text="My Projects" OnClick="bMyProjects_Click" />
-                                <br />
-                                <asp:Button ID="bDefault" runat="server" Text="Default" OnClick="bDefault_Click" />
-                            </asp:Panel>
-                            <br />
-                        
+                        <div class="align-content-center" style="background-color: orange;">  
+                    
+                            <p class="lead ">
+                                <center>
+                            <asp:ContentPlaceHolder id="MainContent" runat="server" >
+        
+                            </asp:ContentPlaceHolder>
+                            <asp:ContentPlaceHolder id="NotLogInContent" runat="server" >
+        
+                            </asp:ContentPlaceHolder>
+                             </center>
+                                    </p >
+                            </div>
+          
                     </div>
+                    </div>
+
+
                     <!-- END LEFT MENU -->
 
                 <!-- PAGE CONTENT-->
-                <div class="col-md-11" style="background-color: orange;">  
-                    
-
-                            <asp:ContentPlaceHolder id="MainContent" runat="server">
-        
-                            </asp:ContentPlaceHolder>
-                            <asp:ContentPlaceHolder id="NotLogInContent" runat="server">
-        
-                            </asp:ContentPlaceHolder>
-                   
-                </div> 
+               
                 <!-- END PAGE CONTENT -->
             </div>
             <div class="row">
                 <!-- FOOTER -->
             <div class="col-md-12" style="background-color: green">
-            FOOTER FOOTER FOOTER 
+            FOOTER FOOTER FOOTER                 
             </div>
                 <!-- END FOOTER-->
             </div>
+                      
 
-
-       </div>
+       
 
     </form>
 </body>

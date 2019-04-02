@@ -11,6 +11,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         if (Session["UserLogIn"] != null)
         {
+            
             bLogout.Text = "Logout";
             MainContent.Visible = true;
             NotLogInContent.Visible = false;
@@ -19,11 +20,23 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
         else
         {
-            bLogout.Text = "Log In";
+           bLogout.Text = "Log In";
             MainContent.Visible = false;
             NotLogInContent.Visible = true;
             pnlLeftMenu.Visible = false;
+            bAdminManageUsers.Visible = false;
         }
+        int ra = 1;
+         ra = Convert.ToInt32(Session["Level"]);
+        if(ra==0 && Session["UserLogIn"]!=null)
+        {
+            bAdminManageUsers.Visible = true;
+        }
+        else
+        {
+            bAdminManageUsers.Visible = false;
+        }
+      
     }
 
 
@@ -60,5 +73,10 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void bDefault_Click(object sender, EventArgs e)
     {
         Response.Redirect("Default.aspx");
+    }
+
+    protected void bAdminManageUsers_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AccountsManagementAdmin.aspx");
     }
 }

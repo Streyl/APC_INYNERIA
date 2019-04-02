@@ -33,8 +33,8 @@ public partial class Login : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        object o = Session["User"];
-       
+        object o = Session["User"]; 
+        
     }
 
 
@@ -53,6 +53,7 @@ public partial class Login : System.Web.UI.Page
         {
             Session["UserLogIn"] = tbLogin.Text;
             Session["User"] = logged;
+            Session["Level"] = logged.level;
             Response.Redirect("default.aspx");
         }
         else
