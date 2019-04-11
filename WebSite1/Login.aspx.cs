@@ -14,7 +14,7 @@ public partial class Login : System.Web.UI.Page
 
     bool IsUserExist(string userLogin, string userPassword, out user logged)//if user is already log in is true
     {
-
+        
         var q = from p in BaseDB.users
                 where p.login == tbLogin.Text
                 && p.password == tbPassword.Text
@@ -35,15 +35,9 @@ public partial class Login : System.Web.UI.Page
     {
         object o = Session["User"]; 
         
+        
     }
-
-
-
-    protected void TextBox1_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
+    
 
 
     protected void bConfirm_Click(object sender, EventArgs e)
@@ -55,6 +49,7 @@ public partial class Login : System.Web.UI.Page
             Session["User"] = logged;
             Session["Level"] = logged.level;
             Response.Redirect("default.aspx");
+            
         }
         else
         {
@@ -64,18 +59,6 @@ public partial class Login : System.Web.UI.Page
 
     }
 
-
-
-    protected void tbPassword_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void bLogout_Click(object sender, EventArgs e)
-    {
-
-    }
-
-
+    
 
 }

@@ -7,16 +7,18 @@
                 <br/>
                 <asp:Label ID="Label2" runat="server" Text="Login"></asp:Label>
                 &nbsp;
-                <asp:TextBox ID="tbLogin" runat="server" AutoCompleteType="Disabled" OnTextChanged="TextBox1_TextChanged" style="margin-left: 39px" Width="154px"></asp:TextBox>
+                <asp:TextBox ID="tbLogin" runat="server" AutoCompleteType="Disabled" style="margin-left: 39px" Width="180px" CssClass="auto-style1"></asp:TextBox>
                 <br />
                 &nbsp;<br />
                 <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
                 &nbsp;&nbsp;
-                <asp:TextBox ID="tbPassword" runat="server" AutoCompleteType="Disabled" style="margin-top: 9px" TextMode="Password" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="tbPassword" runat="server" AutoCompleteType="Disabled" style="margin-top: 9px" TextMode="Password"></asp:TextBox>
                 <br />
-                <asp:Label ID="lblWrongSignIn" runat="server" Text="Wrong Login or/and Password" Visible="False" Height="25px" Width="300px"></asp:Label>
+                <asp:Label ID="lblWrongSignIn" runat="server" Text="Wrong Login or/and Password" Visible="False" Width="300px" Font-Italic="True" Font-Size="14px" ForeColor="Red"></asp:Label>
                
-                <asp:Button ID="bConfirm" runat="server" OnClick="bConfirm_Click" Text="Confirm" />
+                <br />
+               
+                <asp:Button ID="bConfirm" CssClass="btn btn-success" runat="server" OnClick="bConfirm_Click" Text="Confirm" />
             </asp:panel>
 
     
@@ -30,3 +32,10 @@
             </asp:Panel>
 
     </asp:Content>
+<asp:Content ID="Content2" runat="server" contentplaceholderid="head">
+    <style type="text/css">
+    .auto-style1 {
+        border-radius: .25rem!important;
+    }
+</style>
+</asp:Content>

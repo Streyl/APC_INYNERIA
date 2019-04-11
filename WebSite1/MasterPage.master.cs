@@ -57,6 +57,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
 
     protected void bRegistration_Click(object sender, EventArgs e)
     {
+        
         Response.Redirect("Registration.aspx");
     }
 

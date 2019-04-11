@@ -6,10 +6,13 @@
 <head runat="server">
     <meta charset="utf-8">
     <title></title>
-    <link rel="stylesheet" href="Content/bootstrap.css" type="text/css"/>  
+    <link rel="stylesheet" href="Content/bootstrap.css" type="text/css"/> 
+    <link rel="stylesheet" type="text/css" href="css/custom.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" ><!--crossorigin="anonymous"-->
+    <html xmlns="http://www.w3.org/1999/xhtml">
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
-
+    <!-- dodac link do plikow skryptowych-->
 
 </head>
 <body>
@@ -24,12 +27,12 @@
                 <!-- UPER MENU -->
                 <div class="col-2"> </div>
                 <div class="col-8">
-                <a ID="bAbout" role="button" class="btn btn-primary" href="Default.aspx">About</a>
-                <a ID="bContact" type="button" class="btn btn-primary" href="Default.aspx">Contact</a>
+                <a ID="bAbout" role="button" class="btn btn-outline-info " href="Default.aspx">About</a>
+                <a ID="bContact" role="button" class="btn btn-outline-info" href="Default.aspx">Contact</a>
                 </div> 
                     <div class="col-1 d-flex justify-content-end">
-                <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" class="btn btn-primary" BorderColor="Lavender" />
-                <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" class="btn btn-primary" BorderColor="Lavender"/>
+                <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" class="btn btn-outline-success" BorderColor="Lavender" />
+                <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" class="btn btn-outline-success" BorderColor="Lavender"/>
                  <asp:Button ID="bAdminManageUsers" runat="server" Text="Manage Users"  class="btn btn-primary" BorderColor="Lavender" OnClick="bAdminManageUsers_Click" Visible="False"/>
                    </div>
                 <!-- END UPER MENU -->
@@ -46,7 +49,7 @@
   <!-- LEFT MENU -->
                 <div class="row ">
 
-                    <div class="col-2 "> <asp:Panel ID="pnlLeftMenu" runat="server" Height="247px" Width="215px">
+                    <div class="col-2 overflow-y:scroll"> <asp:Panel ID="pnlLeftMenu" runat="server" Height="247px" Width="215px">
                         <div class="list-group" id="list=tab" role="tablist">
                            
                             <a class="list-group-item list-group-item-action tablist" id="bDefault"   href="Default.aspx" role="tab" aria-controls="default">Default</a>
@@ -55,9 +58,9 @@
                             
                        </div> </asp:Panel>
                         </div>
-                    <div class="jumbotron col-8"  >
+                    <div class="jumbotron col-8 shadow p-3 mb-5 bg-white rounded"  >
                         
-                        <div class="align-content-center" style="background-color: orange;">  
+                        <div class="align-content-center shadow p-3 mb-5  rounded" style="background-color: lightgrey;">  
                     
                             <p class="lead ">
                                 <center>
@@ -81,14 +84,16 @@
                
                 <!-- END PAGE CONTENT -->
             </div>
-            <div class="row">
+        
                 <!-- FOOTER -->
+            <div class="row">
+               
             <div class="col-md-12" style="background-color: green">
             FOOTER FOOTER FOOTER                 
             </div>
-                <!-- END FOOTER-->
+               
             </div>
-                      
+                <!-- END FOOTER-->
 
        
 

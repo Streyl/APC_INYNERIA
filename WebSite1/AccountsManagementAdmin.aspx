@@ -4,82 +4,99 @@
 <asp:Content ID="BodyAccountsManagment" ContentPlaceHolderID="MainContent" runat="server">
 
 
-    <style type="text/css">
-        .auto-style2 {
-            height: 26px;
-            width: 93px;
-        }
-        .auto-style4 {
-            height: 26px;
-            width: 169px;
-        }
-        .auto-style5 {
-            width: 169px;
-        }
-        .auto-style6 {
-            width: 93px;
-        }
-        .auto-style7 {
-            width: 32%;
-            margin-left: 0px;
-        }
-        </style>
 
-        <div>
-            <table class="auto-style7">
+
+        <asp:Panel ID="Panel1" runat="server">
+            <table aria-orientation="horizontal" class="auto-style2">
                 <tr>
-                    <td class="auto-style2">Search</td>
+                    <td class="auto-style6">Search</td>
                     <td class="auto-style4">
-                        <asp:RadioButtonList ID="rdlSearchCheck" runat="server" AutoPostBack="True" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" RepeatColumns="5" Width="332px">
+                        
+                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="auto-style8" Width="225px">
                             <asp:ListItem Selected="True">Login</asp:ListItem>
                             <asp:ListItem>Name</asp:ListItem>
                             <asp:ListItem>Surname</asp:ListItem>
                             <asp:ListItem>Status</asp:ListItem>
                             <asp:ListItem>Level</asp:ListItem>
-                        </asp:RadioButtonList>
+                        </asp:DropDownList>
                     </td>
+        
                     
                 </tr>
-
                 <tr>
                     <td class="auto-style6">
-                        <asp:Button ID="btnSearch" runat="server" OnClick="Button1_Click" Text="Search" />
+                        <asp:Button ID="btnSearch"  CssClass="btn btn-info" runat="server" OnClick="Button1_Click" Text="Search" />
                     </td>
-                    <td class="auto-style5">
-                        <asp:Label ID="lblText1" runat="server" Text="Login"></asp:Label>
-                        <asp:TextBox ID="tbLogin" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
+                    <td class="auto-style2" >
+                        <asp:TextBox ID="tbLogin" runat="server" AutoCompleteType="Disabled"  Width="220px" style="padding-left"></asp:TextBox>
                     </td>
 
                 </tr>
                 <tr>
-                    <td class="auto-style6">
-                                    <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
-                                    </td>
-                    <td class="auto-style5">
-                        <asp:Label ID="Label1" runat="server" Text="Label" Visible="False"></asp:Label>
-                        <asp:TextBox ID="TextBox1" runat="server" Enabled="False"></asp:TextBox>
-                        <asp:Button ID="btnYes" runat="server"  Text="Yes" Visible="False" OnClick="btnYes_Click" />
-                        <asp:Button ID="btnNo" runat="server"  Text="No" Visible="False" Width="47px" OnClick="btnNo_Click" />
-                                    </td>
+                    <td class="auto-style7" >
+                                    &nbsp;</td>
+                    <td >
+                        &nbsp;</td>
                 </tr>
-                                <td colspan="2">
-                
-          
-            <asp:GridView ID="GridView2" runat="server" OnSelectedIndexChanged="GridView2_SelectedIndexChanged" >
-                
-                <Columns>
-                    <asp:CommandField ShowSelectButton="True" />
-                </Columns>
-                
-            </asp:GridView>
-          
-                </td>
+
+                </tr>
 
 </table>
-        </div>
-        
-    <asp:Panel ID="Panel1" runat="server" Height="137px" Width="1120px">
-            
-          
+            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="LinqDataSource1" DataKeyNames="id" AllowPaging="True"
+                CellPadding="3" ForeColor="#333333" GridLines="Horizontal" Width="25%" AllowSorting="True">
+                <AlternatingRowStyle BackColor="White" />
+                <Columns>
+                    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
+                    
+                    <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" InsertVisible="False" ReadOnly="True" />
+                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                    <asp:BoundField DataField="surname" HeaderText="surname" SortExpression="surname" />
+                    <asp:BoundField DataField="login" HeaderText="login" SortExpression="login" />
+                    <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" />
+                    <asp:BoundField DataField="level" HeaderText="level" SortExpression="level" />
+                    <asp:BoundField DataField="accountStatus" HeaderText="accountStatus" SortExpression="accountStatus" />
+                </Columns>
+                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+                <EditRowStyle CssClass="GridViewEditRow" />
+                <SortedAscendingCellStyle BackColor="#FDF5AC" />
+                <SortedAscendingHeaderStyle BackColor="#4D0000" />
+                <SortedDescendingCellStyle BackColor="#FCF6C0" />
+                <SortedDescendingHeaderStyle BackColor="#820000" />
+
+            </asp:GridView>
+            <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LinqDataClassesDataContext"
+                 TableName="users" EnableDelete="True" EnableInsert="True" EnableUpdate="True" EntityTypeName="">
+            </asp:LinqDataSource>
         </asp:Panel>
+
         </asp:Content>
+<asp:Content ID="Content1" runat="server" contentplaceholderid="head">
+    <style type="text/css">
+        .auto-style2 {
+            height: 44px;
+        }
+        .auto-style4 {
+            width: 194px;
+        }
+        .auto-style6 {
+            height: 44px;
+            width: 99px;
+        }
+        .auto-style7 {
+            width: 99px;
+        }
+        .auto-style8 {
+            margin-left: 21;
+        }
+        .GridViewEditRow input[type=text]
+        {width:100px;
+
+        } /* size textboxes */
+        .GridViewEditRow select 
+        {width:50px;} /* size drop down lists */
+    </style>
+    </asp:Content>
