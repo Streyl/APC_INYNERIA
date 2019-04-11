@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 public partial class Registration : System.Web.UI.Page
 {
-
+    LinqDataClassesDataContext db = new LinqDataClassesDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -31,6 +31,11 @@ public partial class Registration : System.Web.UI.Page
             lbErrorMessage.Text = "Your have to fill all fields";
             Clear(0);
 
+        }
+        else if(UserExists())
+        {
+            lbErrorMessage.Text = "User already exists";
+            Clear(0);
         }
         else if(!Regex.IsMatch(tbPassword.Text, "[A-Z]"))
         {
@@ -54,7 +59,7 @@ public partial class Registration : System.Web.UI.Page
         }
         else
         {
-            LinqDataClassesDataContext db = new LinqDataClassesDataContext();
+            
 
             user User = new user
             {
@@ -69,6 +74,18 @@ public partial class Registration : System.Web.UI.Page
             db.SubmitChanges();
 
             Response.Redirect("login.aspx");
+        }
+    }
+
+    private bool UserExists()
+    {
+        if(db.users.Count(u=>u.login==tbLogin.Text)>0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -89,5 +106,4 @@ public partial class Registration : System.Web.UI.Page
         
     }
 }
-//Problems
-//Doesnt adds id right;
+
