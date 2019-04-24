@@ -7,7 +7,7 @@
                     <asp:Label  runat="server" Text="Change Login"></asp:Label>
                 </td>
                 <td colspan="2">
-                     <asp:TextBox ID="tbChangeLogin" runat="server"></asp:TextBox>
+                     <asp:TextBox ID="tbChangeLogin" runat="server" OnTextChanged="tbChangeLogin_TextChanged"></asp:TextBox>
                 </td>
             </tr>
             <tr>
@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <td colspan="3">
-                    <asp:Button ID="bSubmitChange" runat="server" Text="SubmitChanges" />
+                    <asp:Button ID="bSubmitChange" runat="server" Text="SubmitChanges" OnClick="bSubmitChange_Click" />
                 </td>
             </tr>
         </table>
