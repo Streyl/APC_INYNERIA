@@ -7,7 +7,7 @@
 
 
         <asp:Panel ID="Panel1" runat="server">
-            <table aria-orientation="horizontal" class="auto-style2">
+            <table aria-orientation="horizontal" class="auto-style9">
                 <tr>
                     <td class="auto-style6">Search</td>
                     <td class="auto-style4">
@@ -98,5 +98,9 @@
         } /* size textboxes */
         .GridViewEditRow select 
         {width:50px;} /* size drop down lists */
+        .auto-style9 {
+            height: 44px;
+            width: 376px;
+        }
     </style>
     </asp:Content>

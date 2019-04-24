@@ -28,7 +28,7 @@
                 <div class="col-2"> </div>
                 <div class="col-8">
                 <a ID="bAbout" role="button" class="btn btn-outline-info " href="Default.aspx">About</a>
-                <a ID="bContact" role="button" class="btn btn-outline-info" href="Default.aspx">Contact</a>
+                <a ID="bContact" role="button" class="btn btn-outline-info" href="Contact.aspx">Contact</a>
                 </div> 
                     <div class="col-1 d-flex justify-content-end">
                 <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" class="btn btn-outline-success" BorderColor="Lavender" />
@@ -49,7 +49,7 @@
   <!-- LEFT MENU -->
                 <div class="row ">
 
-                    <div class="col-2 overflow-y:scroll"> <asp:Panel ID="pnlLeftMenu" runat="server" Height="247px" Width="215px">
+                    <div class="col-2 "> <asp:Panel ID="pnlLeftMenu" runat="server" Height="247px" Width="215px">
                         <div class="list-group" id="list=tab" role="tablist">
                            
                             <a class="list-group-item list-group-item-action tablist" id="bDefault"   href="Default.aspx" role="tab" aria-controls="default">Default</a>
@@ -58,7 +58,7 @@
                             
                        </div> </asp:Panel>
                         </div>
-                    <div class="jumbotron col-8 shadow p-3 mb-5 bg-white rounded"  >
+                    <div class="jumbotron col-8 shadow p-3 mb-5 bg-white rounded width:auto"  >
                         
                         <div class="align-content-center shadow p-3 mb-5  rounded" style="background-color: lightgrey;">  
                     
