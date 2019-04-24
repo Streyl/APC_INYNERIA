@@ -10,7 +10,7 @@ public partial class UserConfiguration : System.Web.UI.Page
     LinqDataClassesDataContext db = new LinqDataClassesDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
-        tbChangeLogin = db.users.login.text;
+        //tbChangeLogin = db.users.login.text;
 
     }
 
