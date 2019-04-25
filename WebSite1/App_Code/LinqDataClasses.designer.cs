@@ -109,8 +109,7 @@ public partial class LinqDataClassesDataContext : System.Data.Linq.DataContext
 [global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.project")]
 public partial class project : INotifyPropertyChanging, INotifyPropertyChanged
 {
-	
-	private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+    private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 	
 	private int _id;
 	
@@ -727,8 +726,6 @@ public partial class task : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private int _id;
 	
-	private System.Nullable<int> _parentID;
-	
 	private string _name;
 	
 	private int _leaderID;
@@ -739,13 +736,9 @@ public partial class task : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	private int _projectID;
 	
-	private EntitySet<task> _tasks;
-	
 	private EntitySet<taskAssignment> _taskAssignments;
 	
 	private EntityRef<project> _project;
-	
-	private EntityRef<task> _task1;
 	
 	private EntityRef<user> _user;
 	
@@ -755,8 +748,6 @@ public partial class task : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnCreated();
     partial void OnidChanging(int value);
     partial void OnidChanged();
-    partial void OnparentIDChanging(System.Nullable<int> value);
-    partial void OnparentIDChanged();
     partial void OnnameChanging(string value);
     partial void OnnameChanged();
     partial void OnleaderIDChanging(int value);
@@ -771,10 +762,8 @@ public partial class task : INotifyPropertyChanging, INotifyPropertyChanged
 	
 	public task()
 	{
-		this._tasks = new EntitySet<task>(new Action<task>(this.attach_tasks), new Action<task>(this.detach_tasks));
 		this._taskAssignments = new EntitySet<taskAssignment>(new Action<taskAssignment>(this.attach_taskAssignments), new Action<taskAssignment>(this.detach_taskAssignments));
 		this._project = default(EntityRef<project>);
-		this._task1 = default(EntityRef<task>);
 		this._user = default(EntityRef<user>);
 		OnCreated();
 	}
@@ -795,30 +784,6 @@ public partial class task : INotifyPropertyChanging, INotifyPropertyChanged
 				this._id = value;
 				this.SendPropertyChanged("id");
 				this.OnidChanged();
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_parentID", DbType="Int")]
-	public System.Nullable<int> parentID
-	{
-		get
-		{
-			return this._parentID;
-		}
-		set
-		{
-			if ((this._parentID != value))
-			{
-				if (this._task1.HasLoadedOrAssignedValue)
-				{
-					throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-				}
-				this.OnparentIDChanging(value);
-				this.SendPropertyChanging();
-				this._parentID = value;
-				this.SendPropertyChanged("parentID");
-				this.OnparentIDChanged();
 			}
 		}
 	}
@@ -931,19 +896,6 @@ public partial class task : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="task_task", Storage="_tasks", ThisKey="id", OtherKey="parentID")]
-	public EntitySet<task> tasks
-	{
-		get
-		{
-			return this._tasks;
-		}
-		set
-		{
-			this._tasks.Assign(value);
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="task_taskAssignment", Storage="_taskAssignments", ThisKey="id", OtherKey="taskID")]
 	public EntitySet<taskAssignment> taskAssignments
 	{
@@ -987,40 +939,6 @@ public partial class task : INotifyPropertyChanging, INotifyPropertyChanged
 					this._projectID = default(int);
 				}
 				this.SendPropertyChanged("project");
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.AssociationAttribute(Name="task_task", Storage="_task1", ThisKey="parentID", OtherKey="id", IsForeignKey=true)]
-	public task task1
-	{
-		get
-		{
-			return this._task1.Entity;
-		}
-		set
-		{
-			task previousValue = this._task1.Entity;
-			if (((previousValue != value) 
-						|| (this._task1.HasLoadedOrAssignedValue == false)))
-			{
-				this.SendPropertyChanging();
-				if ((previousValue != null))
-				{
-					this._task1.Entity = null;
-					previousValue.tasks.Remove(this);
-				}
-				this._task1.Entity = value;
-				if ((value != null))
-				{
-					value.tasks.Add(this);
-					this._parentID = value.id;
-				}
-				else
-				{
-					this._parentID = default(Nullable<int>);
-				}
-				this.SendPropertyChanged("task1");
 			}
 		}
 	}
@@ -1077,18 +995,6 @@ public partial class task : INotifyPropertyChanging, INotifyPropertyChanged
 		{
 			this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 		}
-	}
-	
-	private void attach_tasks(task entity)
-	{
-		this.SendPropertyChanging();
-		entity.task1 = this;
-	}
-	
-	private void detach_tasks(task entity)
-	{
-		this.SendPropertyChanging();
-		entity.task1 = null;
 	}
 	
 	private void attach_taskAssignments(taskAssignment entity)
