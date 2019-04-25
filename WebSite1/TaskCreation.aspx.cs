@@ -6,13 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class TaskCreation : System.Web.UI.Page
-{
+{// zrobić wypisywanie leaderów a nie ze sie ich wpisuje z palca 
+    LinqDataClassesDataContext dbb = new LinqDataClassesDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
-        LinqDataClassesDataContext dbb = new LinqDataClassesDataContext();
-
-
-
+        ddlChoseProject.DataTextField = "name_description";
+        ddlChoseProject.DataValueField = "id";
         ddlChoseProject.DataSource = dbb.projects;
         ddlChoseProject.DataBind();
     }
@@ -48,29 +47,29 @@ public partial class TaskCreation : System.Web.UI.Page
         }
     else
         {
-            LinqDataClassesDataContext db = new LinqDataClassesDataContext();
+            
 
-            var Leader = (from u in db.users
+            var Leader = (from u in dbb.users
                           where u.name == tbLeader.Text
                           select u.id).First();
 
-            var ProjectID = (from p in db.projects
-                          where p.name == ddlChoseProject.SelectedValue //propably this error show becouse text isnt just a name but name+date
+            var ProjectID = (from p in dbb.projects
+                          where p.name == ddlChoseProject.SelectedValue
                           select p.id).FirstOrDefault();
 
            
-            task Project = new task
+            task t = new task
             {
                 name = tbName.Text,
                 leaderID=Leader,
                 status=ddlStatus.Text,
                 description=tbDescription.Text,
-                projectID=ProjectID
-                
+                projectID =  Convert.ToInt32( ddlChoseProject.SelectedValue)
+
             };
 
-            db.tasks.InsertOnSubmit(Project);
-            db.SubmitChanges();
+            dbb.tasks.InsertOnSubmit(t);
+            dbb.SubmitChanges();
         }
 
     }
