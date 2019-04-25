@@ -32,13 +32,16 @@
   <Table Name="dbo.task" Member="tasks">
     <Type Name="task">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="parentID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="leaderID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="status" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="projectID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="task_task" Member="tasks" ThisKey="id" OtherKey="parentID" Type="task" />
       <Association Name="task_taskAssignment" Member="taskAssignments" ThisKey="id" OtherKey="taskID" Type="taskAssignment" />
       <Association Name="project_task" Member="project" ThisKey="projectID" OtherKey="id" Type="project" IsForeignKey="true" />
+      <Association Name="task_task" Member="task1" ThisKey="parentID" OtherKey="id" Type="task" IsForeignKey="true" />
       <Association Name="user_task" Member="user" ThisKey="leaderID" OtherKey="id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>

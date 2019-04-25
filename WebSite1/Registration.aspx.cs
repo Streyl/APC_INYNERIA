@@ -11,7 +11,7 @@ using System.Web.UI.WebControls;
 
 public partial class Registration : System.Web.UI.Page
 {
-    LinqDataClassesDataContext db = new LinqDataClassesDataContext();
+    LinqDataClassesDataContext BaseDB = new LinqDataClassesDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -70,8 +70,8 @@ public partial class Registration : System.Web.UI.Page
                 accountStatus = 1,
                 level = 1
             };
-            db.users.InsertOnSubmit(User);
-            db.SubmitChanges();
+            BaseDB.users.InsertOnSubmit(User);
+            BaseDB.SubmitChanges();
 
             Response.Redirect("login.aspx");
         }
@@ -79,7 +79,7 @@ public partial class Registration : System.Web.UI.Page
 
     private bool UserExists()
     {
-        if(db.users.Count(u=>u.login==tbLogin.Text)>0)
+        if(BaseDB.users.Count(u=>u.login==tbLogin.Text)>0)
         {
             return true;
         }
