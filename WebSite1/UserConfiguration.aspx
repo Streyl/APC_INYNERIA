@@ -3,14 +3,41 @@
 	<asp:Content ID="IDPageBody" ContentPlaceHolderID="MainContent" runat="server">
         <table>
             <tr>
+               
+                <td>
+                    <asp:Label  runat="server" Text="Change Name"></asp:Label>
+                </td>
+                <td colspan="2">
+                     <asp:TextBox ID="tbChangeName" runat="server" ></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                
+                <td>
+                    <asp:Label  runat="server" Text="Change Sirname"></asp:Label>
+                </td>
+                <td colspan="2">
+                     <asp:TextBox ID="tbChangeSirname" runat="server" ></asp:TextBox>
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <hr />
+                </td>
+            </tr>
+
+            <tr>
+                
                 <td>
                     <asp:Label  runat="server" Text="Change Login"></asp:Label>
                 </td>
                 <td colspan="2">
-                     <asp:TextBox ID="tbChangeLogin" runat="server" OnTextChanged="tbChangeLogin_TextChanged"></asp:TextBox>
+                     <asp:TextBox ID="tbChangeLogin" runat="server" ></asp:TextBox>
                 </td>
             </tr>
             <tr>
+                 
                 <td>
                     <asp:Label runat="server" Text="Change Password"></asp:Label>
                 </td>
@@ -19,12 +46,12 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3">
+                <td colspan="4">
                     <hr />
                 </td>
             </tr>
             <tr>
-                <td colspan="3">
+                <td colspan="4">
                     <asp:Button ID="bSubmitChange" runat="server" Text="SubmitChanges" OnClick="bSubmitChange_Click" />
                 </td>
             </tr>
