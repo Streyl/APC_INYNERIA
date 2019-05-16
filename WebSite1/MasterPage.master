@@ -31,9 +31,9 @@
                 <a ID="bContact" role="button" class="btn btn-outline-info" href="Contact.aspx">Contact</a>
                 </div> 
                     <div class="col-1 d-flex justify-content-end">
-                <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" class="btn btn-outline-success" BorderColor="Lavender" />
-                <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" class="btn btn-outline-success" BorderColor="Lavender"/>
-                 <asp:Button ID="bAdminManageUsers" runat="server" Text="Manage Users"  class="btn btn-primary" BorderColor="Lavender" OnClick="bAdminManageUsers_Click" Visible="False"/>
+                <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" class="btn btn-outline-info"   BorderColor="Lavender" UseSubmitBehavior="False" />
+                <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" class="btn btn-outline-success" BorderColor="Lavender" UseSubmitBehavior="False"/>
+                 <asp:Button ID="bAdminManageUsers" runat="server" Text="Manage Users"  class="btn btn-primary" BorderColor="Lavender" OnClick="bAdminManageUsers_Click" Visible="False" UseSubmitBehavior="False"/>
                    </div>
                 <!-- END UPER MENU -->
             </nav>

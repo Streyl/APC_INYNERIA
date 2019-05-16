@@ -35,7 +35,7 @@
             <asp:Label ID="Label1" runat="server" Text="Name"></asp:Label>
             </td>
             <td>
-            <asp:TextBox ID="tbName" runat="server" Width="286px" AutoCompleteType="Disabled" ></asp:TextBox>
+            <asp:TextBox ID="tbName" runat="server" Width="286px" AutoCompleteType="Disabled" MaxLength="50" ></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -68,7 +68,7 @@
                      <asp:Label ID="Label4" runat="server" Text="Description"></asp:Label>
             </td>
             <td >
-            <asp:TextBox ID="tbDescription" runat="server" Height="224px" Width="291px" TextMode="MultiLine" AutoCompleteType="Disabled"></asp:TextBox>
+            <asp:TextBox ID="tbDescription" runat="server" Height="224px" Width="291px" TextMode="MultiLine" AutoCompleteType="Disabled" MaxLength="4000"></asp:TextBox>
 
             </td>
         </tr>
@@ -115,7 +115,7 @@
             <asp:Label ID="Label8" runat="server" Text="Name"></asp:Label>
             </td>
             <td>
-            <asp:TextBox ID="tbName2" runat="server" Width="286px" AutoCompleteType="Disabled" ></asp:TextBox>
+            <asp:TextBox ID="tbName2" runat="server" Width="286px" AutoCompleteType="Disabled" MaxLength="50" ></asp:TextBox>
             </td>
         </tr>
         <tr>
@@ -146,7 +146,7 @@
                      <asp:Label ID="Label11" runat="server" Text="Description"></asp:Label>
             </td>
             <td >
-            <asp:TextBox ID="tbDescription2" runat="server" Height="224px" Width="291px" TextMode="MultiLine" AutoCompleteType="Disabled"></asp:TextBox>
+            <asp:TextBox ID="tbDescription2" runat="server" Height="224px" Width="291px" TextMode="MultiLine" AutoCompleteType="Disabled" MaxLength="200"></asp:TextBox>
 
             </td>
         </tr>

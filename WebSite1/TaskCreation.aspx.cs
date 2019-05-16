@@ -37,7 +37,7 @@ public partial class TaskCreation : System.Web.UI.Page
     }
     /// Need to filtr task and subtask 
     protected void bSubmit_Click(object sender, EventArgs e)
-    { if (tbName.Text == "" || tbDescription.Text == "")
+    { if (tbName.Text == "" || tbDescription.Text == "" )
         {
             Validation();
         }
@@ -102,7 +102,7 @@ public partial class TaskCreation : System.Web.UI.Page
             }
 
 
-            if (tbDescription2.Text == "")
+            if (tbDescription2.Text == "" )
             {
                 tbDescription2.Style.Add("background-color", "red");
             }
@@ -115,7 +115,7 @@ public partial class TaskCreation : System.Web.UI.Page
 
     protected void btnSubmit2_Click(object sender, EventArgs e)
     {
-        if (tbName2.Text == "" || tbDescription2.Text == "")
+        if (tbName2.Text == "" || tbDescription2.Text == "" )
         {
             Validation();
         }
