@@ -18,7 +18,7 @@
                
                 <br />
                
-                <asp:Button ID="bConfirm" CssClass="btn btn-success" type="submit" runat="server" OnClick="bConfirm_Click" Text="Confirm" />
+                <asp:Button ID="bConfirm" CssClass="btn btn-success"  input type="submit" runat="server" OnClick="bConfirm_Click" Text="Confirm"  value="Submit"/>
             </asp:panel>
 
     
