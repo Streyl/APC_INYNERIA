@@ -76,21 +76,23 @@ public partial class UserConfiguration : System.Web.UI.Page
 
     protected void bSubmitNameSirname_Click(object sender, EventArgs e)
     {
-        if (tbChangeName.Text == "")
+        if (tbChangeName.Text == "" || tbChangeName.Text.Length>50)
         {
             tbChangeName.Text = (Session["User"] as user).name;
-            lbErrorMessageUP.Visible = true;
-            lbErrorMessageUP.ForeColor = System.Drawing.Color.Red;
-            lbErrorMessageUP.Text = "Problem with you'r Name, please Change it and try again.";
-        }
-        else if (tbChangeSirname.Text == "")
-        {
             tbChangeSirname.Text = (Session["User"] as user).surname;
             lbErrorMessageUP.Visible = true;
             lbErrorMessageUP.ForeColor = System.Drawing.Color.Red;
-            lbErrorMessageUP.Text = "Problem with you'r Sirname, please Change it and try again.";
+            lbErrorMessageUP.Text = "Problem with you'r Name, please Change it and try again. MAX 50 charachters";
         }
-        else if(tbChangeName.Text == "" || tbChangeSirname.Text == "")
+        else if (tbChangeSirname.Text == "" || tbChangeSirname.Text.Length>50)
+        {
+            tbChangeName.Text = (Session["User"] as user).name;
+            tbChangeSirname.Text = (Session["User"] as user).surname;
+            lbErrorMessageUP.Visible = true;
+            lbErrorMessageUP.ForeColor = System.Drawing.Color.Red;
+            lbErrorMessageUP.Text = "Problem with you'r Sirname, please Change it and try again. MAX 50 charachters";
+        }
+        else if(tbChangeName.Text == "" && tbChangeSirname.Text == "")
         {
             tbChangeName.Text = (Session["User"] as user).name;
             tbChangeSirname.Text = (Session["User"] as user).surname;
