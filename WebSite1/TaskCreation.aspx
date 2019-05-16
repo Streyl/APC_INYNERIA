@@ -3,6 +3,7 @@
 
 <asp:Content ID="BodyTaskCreation" ContentPlaceHolderID="MainContent" runat="server">
 
+   
     <table >
         <tr>
             <td class="auto-style1">
@@ -15,7 +16,12 @@
                 </asp:RadioButtonList>
             </td>
             </tr>
-        </table>
+        </table><asp:LayoutEditorPart
+    
+    <div class="card text-white bg-success mb-3" style="max-width: 28rem;">
+  <div class="card-header">Add to project</div> <!-- add label with change text  -->
+  <div class="card-body" style="max-width: 28rem">
+
 
     <asp:panel id="pnlAddtoProject" runat="server">
     <table>
@@ -24,7 +30,7 @@
             <asp:Label ID="Label5" runat="server" Text="Project" ></asp:Label>
               </td>
               <td>
-                        <asp:DropDownList ID="ddlProject" runat="server" Width="290px" AppendDataBoundItems="True" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceProject" DataTextField="name" DataValueField="id">
+                        <asp:DropDownList ID="ddlProject" runat="server" Width="296px" AppendDataBoundItems="True" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceProject" DataTextField="name" DataValueField="id">
                         </asp:DropDownList>
                         <asp:LinqDataSource ID="LinqDataSourceProject" runat="server" ContextTypeName="LinqDataClassesDataContext" EntityTypeName="" Select="new (id, name)" TableName="projects">
                         </asp:LinqDataSource>
@@ -43,7 +49,7 @@
                      <asp:Label ID="Label2" runat="server" Text="Leader"></asp:Label>
             </td>
             <td>
-            <asp:DropDownList ID="ddlLeader" runat="server" AppendDataBoundItems="True" Width="292px" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceLeader" DataTextField="name_lastname" DataValueField="id">
+            <asp:DropDownList ID="ddlLeader" runat="server" AppendDataBoundItems="True" Width="293px" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceLeader" DataTextField="name_lastname" DataValueField="id">
             </asp:DropDownList>
                 <asp:LinqDataSource ID="LinqDataSourceLeader" runat="server" ContextTypeName="LinqDataClassesDataContext" EntityTypeName="" Select="new (id, name, name_lastname)" TableName="users">
                 </asp:LinqDataSource>
@@ -86,6 +92,10 @@
             </tr>
     </table> 
         </asp:panel>
+
+
+
+
 
     <asp:panel id="pnlAddtoTask" runat="server">
     <table>
@@ -167,7 +177,14 @@
 
 
 
- </asp:Content>
+    </div>
+
+
+        
+  </div>
+
+
+</asp:Content>
 
 <asp:Content ID="Content1" runat="server" contentplaceholderid="head">
     <style type="text/css">

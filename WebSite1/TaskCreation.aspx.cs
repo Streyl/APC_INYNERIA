@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class TaskCreation : System.Web.UI.Page
-{// zrobić wypisywanie leaderów a nie ze sie ich wpisuje z palca 
+{
     LinqDataClassesDataContext dbb = new LinqDataClassesDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -35,7 +35,7 @@ public partial class TaskCreation : System.Web.UI.Page
         
         
     }
-    /// Need to filtr task and subtask 
+    
     protected void bSubmit_Click(object sender, EventArgs e)
     { if (tbName.Text == "" || tbDescription.Text == "" )
         {
@@ -68,7 +68,7 @@ public partial class TaskCreation : System.Web.UI.Page
         if (pnlAddtoProject.Visible == true)
         {
             lInfoProject.Visible = true;
-            lInfoProject.Text = "Corect red field!";
+            lInfoProject.Text = "Correct red field!";
             if (tbName.Text == "")
             {
                 tbName.Style.Add("background-color", "red");
@@ -91,7 +91,7 @@ public partial class TaskCreation : System.Web.UI.Page
         else
         {
             lInfoTask.Visible = true;
-            lInfoTask.Text = "Corect red field!";
+            lInfoTask.Text = "Correct red field!";
             if (tbName2.Text == "")
             {
                 tbName2.Style.Add("background-color", "red");
@@ -171,5 +171,5 @@ public partial class TaskCreation : System.Web.UI.Page
     }
 }
 //stowrzyc czyszczenie validacji po wcisnieciu submit
-// stworzyc wyswietlanie zadań tylko dla obecnego projektu
+
    

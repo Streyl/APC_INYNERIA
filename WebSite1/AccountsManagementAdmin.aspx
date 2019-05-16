@@ -43,7 +43,7 @@
 
 </table>
             <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="LinqDataSource1" DataKeyNames="id" AllowPaging="True"
-                CellPadding="3" ForeColor="#333333" GridLines="Horizontal" Width="25%" AllowSorting="True">
+                CellPadding="3" ForeColor="#333333" GridLines="Horizontal" Width="80%" AllowSorting="True" CssClass="table-responsive-lg">
                 <AlternatingRowStyle BackColor="White" />
                 <Columns>
                     <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />

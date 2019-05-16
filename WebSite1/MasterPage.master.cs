@@ -31,10 +31,13 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if(ra==0 && Session["UserLogIn"]!=null)
         {
             bAdminManageUsers.Visible = true;
+            bAdminProjectManage.Visible = true;
+
         }
         else
         {
             bAdminManageUsers.Visible = false;
+            bAdminProjectManage.Visible = false;
         }
       
     }
@@ -79,5 +82,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void bAdminManageUsers_Click(object sender, EventArgs e)
     {
         Response.Redirect("AccountsManagementAdmin.aspx");
+    }
+    protected void bAdminManageProject_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("AdminProjectTaskManagement.aspx");
     }
 }

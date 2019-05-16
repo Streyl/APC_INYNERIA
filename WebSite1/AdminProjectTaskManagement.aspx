@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="ProjectTaskManagement" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="~/AdminProjectTaskManagement.aspx.cs" Inherits="AdminProjectTaskManagement" %>
 
-<asp:Content ID="BodyProjectTaskManagement" ContentPlaceHolderID="NotLogInContent" runat="server">
+<asp:Content ID="BodyProjectTaskManagement" ContentPlaceHolderID="MainContent" runat="server">
 
     
 
@@ -48,7 +48,7 @@
                 </tr>
 
 </table>
-                        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource1" Width="25%" ForeColor="#333333" GridLines="None" PageSize="15">
+                        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource1" Width="90%" ForeColor="#333333" GridLines="None" PageSize="15" CssClass="table-responsive-lg">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
                                 <asp:CommandField ShowDeleteButton="True" >
@@ -74,6 +74,8 @@
                                 <ItemStyle Width="20px" />
                                 </asp:BoundField>
                             </Columns>
+
+                            <EditRowStyle Width="15%" />
 
                             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -139,7 +141,7 @@
 
 
 
-                &nbsp;<asp:GridView ID="gridviewTask" runat="server" AutoGenerateColumns="False" AutoGenerateEditButton="True" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource2" Width="25%" AllowPaging="True" AllowSorting="True" ForeColor="#333333" GridLines="None">
+                &nbsp;<asp:GridView ID="gridviewTask"  runat="server" AutoGenerateColumns="False" AutoGenerateEditButton="True" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource2" Width="80%" AllowPaging="True" AllowSorting="True" ForeColor="#333333" GridLines="None" CssClass="table-responsive-md">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" />

@@ -32,8 +32,9 @@
                 </div> 
                     <div class="col-1 d-flex justify-content-end">
                 <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" class="btn btn-outline-info"   BorderColor="Lavender" UseSubmitBehavior="False" />
-                <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" class="btn btn-outline-success" BorderColor="Lavender" UseSubmitBehavior="False"/>
+                        <asp:Button ID="bAdminProjectManage" runat="server" Text="Manage Project"  class="btn btn-primary" BorderColor="Lavender"  Visible="False" UseSubmitBehavior="False" OnClick="bAdminManageProject_Click"/>
                  <asp:Button ID="bAdminManageUsers" runat="server" Text="Manage Users"  class="btn btn-primary" BorderColor="Lavender" OnClick="bAdminManageUsers_Click" Visible="False" UseSubmitBehavior="False"/>
+                <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" class="btn btn-outline-success" BorderColor="Lavender" UseSubmitBehavior="False"/>
                    </div>
                 <!-- END UPER MENU -->
             </nav>
@@ -88,11 +89,11 @@
         
                 <!-- FOOTER -->
             <div class="row">
-               
+               <!--
             <div class="col-md-12" style="background-color: green">
             FOOTER FOOTER FOOTER                 
             </div>
-               
+               -->
             </div>
                 <!-- END FOOTER-->
 
