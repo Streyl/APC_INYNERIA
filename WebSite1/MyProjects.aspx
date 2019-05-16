@@ -3,30 +3,70 @@
 
 <asp:Content ID="BodyMyProjects" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="MyProjectsRow" >
-        <div class="MyProjectsColumn" style="display: inline-block;">
-                <asp:ListBox ID="lbUserProjects" runat="server" Width="195px" Height="169px" OnSelectedIndexChanged="lbUserProjects_SelectedIndexChanged">
-                </asp:ListBox>
-                <br />
+   <div style="float: left; width: 50%;">
+            <asp:treeview id="TreeViewProjects" runat="server" width="150px" ExpandDepth="0" OnSelectedNodeChanged="TreeViewProjects_SelectedNodeChanged">
+            </asp:treeview>
+    </div>
+
+    <div style="float: left; width: 50%;">
+
+
+                <div style="float: left; width: 50%;">
+            <asp:Panel ID="LeftPanelProjectName" runat="server" HorizontalAlign="Left">
+                Name
+            </asp:Panel>
+            <asp:Panel ID="LeftPanelProjectCreatorName" runat="server" HorizontalAlign="Left">
+                Creator
+            </asp:Panel>
+            <asp:Panel ID="LeftPanelProjectCreationDate" runat="server" HorizontalAlign="Left">
+                Creation date
+            </asp:Panel>
+            <asp:Panel ID="LeftPanelProjectStartDate" runat="server" HorizontalAlign="Left">
+                Start date
+            </asp:Panel>
+            <asp:Panel ID="LeftPanelProjectEndDate" runat="server" HorizontalAlign="Left">
+                End date
+            </asp:Panel>
+            <asp:Panel ID="LeftPanelProjectStatus" runat="server" HorizontalAlign="Left">
+                Status
+            </asp:Panel>
+            <asp:Panel ID="LeftPanelProjectDescription" runat="server" HorizontalAlign="Left">
+                Description
+            </asp:Panel>
+            <asp:Panel ID="LeftPanelProjectRemarks" runat="server" HorizontalAlign="Left">
+                Remarks
+            </asp:Panel>
+
         </div>
 
-        <div class="MyProjectsColumn" style="display: inline-block;">
-            <asp:Label ID="lblProjectName" runat="server" Text="Name:"></asp:Label>
-            <br />
-            <asp:Label ID="lblProjectCreator" runat="server" Text="Creator:"></asp:Label>
-            <br />
-            <asp:Label ID="lblProjectCreationDate" runat="server" Text="Creation date:"></asp:Label>
-            <br />
-            <asp:Label ID="lblProjectStartDate" runat="server" Text="Start date:"></asp:Label>
-            <br />
-            <asp:Label ID="lblProjectEndDate" runat="server" Text="End date:"></asp:Label>
-            <br />
-            <asp:Label ID="lblProjectStatus" runat="server" Text="Status:"></asp:Label>
-            <br />
-            <asp:Label ID="lblProjectDescription" runat="server" Text="Description"></asp:Label>
-            <br />
-            <asp:Label ID="lblProjectRemarks" runat="server" Text="Remarks:"></asp:Label>
+        <div style="float: left; width: 50%;">
+            <asp:Panel ID="RightPanelProjectName" runat="server" HorizontalAlign="Left">
+                <asp:Label ID="lbProjectName" runat="server" Text=""></asp:Label>
+            </asp:Panel>
+            <asp:Panel ID="RightPanelProjectCreatorName" runat="server" HorizontalAlign="Left">
+                <asp:Label ID="lbProjectCreator" runat="server" Text=""></asp:Label>
+            </asp:Panel>
+            <asp:Panel ID="RightPanelProjectCreationDate" runat="server" HorizontalAlign="Left">
+                <asp:Label ID="lbCreationDate" runat="server" Text=""></asp:Label>
+            </asp:Panel>
+            <asp:Panel ID="RightPanelProjectStartDate" runat="server" HorizontalAlign="Left">
+                <asp:Label ID="lbStartDate" runat="server" Text=""></asp:Label>
+            </asp:Panel>
+            <asp:Panel ID="RightPanelProjectEndDate" runat="server" HorizontalAlign="Left">
+                <asp:Label ID="lbEndDate" runat="server" Text=""></asp:Label>
+            </asp:Panel>
+            <asp:Panel ID="RightPanelProjectStatus" runat="server" HorizontalAlign="Left">
+                <asp:Label ID="lbStatus" runat="server" Text=""></asp:Label>
+            </asp:Panel>
+            <asp:Panel ID="RightPanelProjectDescription" runat="server" HorizontalAlign="Left">
+                 <asp:Label ID="lbDescription" runat="server" Text=""></asp:Label>
+             </asp:Panel>
+            <asp:Panel ID="RightPanelProjectRemarks" runat="server" HorizontalAlign="Left">
+                <asp:Label ID="lbRemarks" runat="server" Text=""></asp:Label>
+             </asp:Panel>
         </div>
+
+        
     </div>
 
 
@@ -39,15 +79,6 @@
 
         Here will be list of projects but you will see it only if you log in on your account
 
-
  </asp:Content>
-
-<asp:Content ID="Content2" runat="server" contentplaceholderid="head">
-    <style type="text/css">
-        .column {
-            height: 177px;
-        }
-    </style>
-</asp:Content>
 
 
