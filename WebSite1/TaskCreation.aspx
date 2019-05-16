@@ -16,7 +16,7 @@
                 </asp:RadioButtonList>
             </td>
             </tr>
-        </table><asp:LayoutEditorPart
+        </table>
     
     <div class="card text-white bg-success mb-3" style="max-width: 28rem;">
   <div class="card-header">Add to project</div> <!-- add label with change text  -->
