@@ -8,27 +8,8 @@ using System.Web;
 /// </summary>
  public partial class project
 {
-    public  string name_project
+    public  string name_description
     {
-        get { return name ; }
+        get { return name + "(" + description + ")"; }
     }
-
-    
-}
-
-public partial class user
-{
-    public string name_lastname
-    {
-        get { return name + " " + surname + '"' + login + '"' ;  }
-    }
-}
-
-public partial class task
-{
-    public string name_task
-    {
-        get { return name; }
-    }
-
 }
