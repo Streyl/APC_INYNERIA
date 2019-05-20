@@ -14,22 +14,21 @@
   </div>
   <div class="card-body">
 
-    <asp:panel id="pnlLogIn" runat="server" height="214px" width="389px">
+    <asp:panel id="pnlLogIn" runat="server" height="214px" width="340px">
 
 
-                <asp:Label ID="Label2" runat="server" Text="Login"></asp:Label>
                 &nbsp;
-                <asp:TextBox ID="tbLogin" runat="server" AutoCompleteType="Disabled" style="margin-left: 20px" Width="180px" CssClass="auto-style1"></asp:TextBox>
+                <asp:TextBox ID="tbLogin" runat="server" AutoCompleteType="Disabled"  CssClass="auto-style1" placeholder="Login"></asp:TextBox>
                 <br />
                 &nbsp;<br />
-                <asp:Label ID="Label3" runat="server" Text="Password"></asp:Label>
+                
                 &nbsp;
-                <asp:TextBox ID="tbPassword" runat="server" AutoCompleteType="Disabled" style="margin-top: 9px" TextMode="Password" CssClass="auto-style1"></asp:TextBox>
+                <asp:TextBox ID="tbPassword" runat="server" AutoCompleteType="Disabled" style="margin-top: 9px" TextMode="Password" CssClass="auto-style1" placeholder="Password"></asp:TextBox>
   <br/>
-                <asp:Button ID="bConfirm" CssClass="btn btn-success"  input type="submit" runat="server" OnClick="bConfirm_Click" Text="Confirm"  value="Submit" style="margin-left: 0"/>
+                <asp:Button ID="bConfirm" CssClass="btn btn-success"   runat="server" OnClick="bConfirm_Click" Text="Confirm"  value="Submit" style="margin-left: 0"/>
   </div>
   <div class="card-footer ">
-                <asp:Label ID="lblWrongSignIn" runat="server" Text="Wrong Login or/and Password" Visible="False" Width="300px" Font-Italic="True" Font-Size="14px" ForeColor="Red"></asp:Label>
+                <asp:Label ID="lblWrongSignIn" runat="server" Text="Wrong Login or/and Password" Visible="False" Width="220px" Font-Italic="True" Font-Size="14px" ForeColor="Red"></asp:Label>
                
   </div>
             </asp:panel>
@@ -51,5 +50,9 @@
     .auto-style1 {
         border-radius: .25rem!important;
     }
-</style>
+        .auto-style2 {
+            border-radius: .25rem!important;
+            margin-left: 0px;
+        }
+    </style>
 </asp:Content>
