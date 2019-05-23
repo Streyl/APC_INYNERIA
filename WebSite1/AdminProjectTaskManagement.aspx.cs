@@ -9,8 +9,56 @@ public partial class AdminProjectTaskManagement : System.Web.UI.Page
 {
     LinqDataClassesDataContext dbb = new LinqDataClassesDataContext();
 
-    protected void Page_Load(object sender, EventArgs e)
+    private void DeleteProject(int projectID)
     {
+        foreach (task t in dbb.tasks.Where(t => t.projectID == projectID))
+        {
+            foreach (taskAssignment tA in dbb.taskAssignments.Where(tA => tA.taskID == t.id))
+            {
+                dbb.taskAssignments.DeleteOnSubmit(tA);
+            }
+
+            t.parentID = null;
+            dbb.tasks.DeleteOnSubmit(t);
+        }
+
+        dbb.projects.DeleteOnSubmit(dbb.projects.Where(p => p.id == projectID).First());
+        dbb.SubmitChanges();
+        GridView1.DataBind();
+    }
+
+
+    private void DeleteTask(int taskID)
+    {
+        task mainTask = dbb.tasks.Where(t => t.id == taskID).First();
+        foreach (taskAssignment tA in dbb.taskAssignments.Where(tA => tA.taskID == mainTask.id))
+        {
+            dbb.taskAssignments.DeleteOnSubmit(tA);
+        }
+
+        foreach (task t in dbb.tasks.Where(t => t.parentID == taskID))
+        {
+            foreach (taskAssignment tA in dbb.taskAssignments.Where(tA => tA.taskID == t.id))
+            {
+                dbb.taskAssignments.DeleteOnSubmit(tA);
+            }
+
+            t.parentID = null;
+            dbb.tasks.DeleteOnSubmit(t);
+        }
+
+
+        dbb.tasks.DeleteOnSubmit(dbb.tasks.Where(t => t.id == taskID).First());
+        dbb.SubmitChanges();
+        gridviewTask.DataBind();
+    }
+
+
+
+protected void Page_Load(object sender, EventArgs e)
+    {
+        //GridView1.Attributes.Add("style", "word-break:break-all; word-wrap:break-word");
+
         if (!IsPostBack)
         {
             ddlChooseProject.DataTextField = "name_project";
@@ -118,9 +166,19 @@ public partial class AdminProjectTaskManagement : System.Web.UI.Page
         }
     }
 
+    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        e.Cancel = true;
+        int projectID = Convert.ToInt32(GridView1.Rows[e.RowIndex].Cells[2].Text);
+        DeleteProject(projectID);
+    }
 
-
-    
+    protected void gridviewTask_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        e.Cancel = true;
+        int taskID = Convert.ToInt32(gridviewTask.Rows[e.RowIndex].Cells[2].Text);
+        DeleteTask(taskID);
+    }
 }
 
 ///Problem when deleting task which is connected to subtask 

@@ -19,21 +19,14 @@ public partial class TaskCreation : System.Web.UI.Page
                 lInfoProject.Visible = false;
                 pnlAddtoProject.Visible = true;
                 pnlAddtoTask.Visible = false;
-              
             }
             else
             {
                 pnlAddtoTask.Visible = true;
                 pnlAddtoProject .Visible= false;
                 lInfoTask.Visible = false;
-                
             }
-
-
-
-        }
-        
-        
+        } 
     }
     
     protected void bSubmit_Click(object sender, EventArgs e)
@@ -44,7 +37,7 @@ public partial class TaskCreation : System.Web.UI.Page
         else
         {
             lInfoProject.Visible = true;
-            lInfoProject.Text = "Sucessful add task to project";
+            lInfoProject.Text = "Sucessfuly added task to project";
 
             task t = new task
             {
@@ -58,9 +51,7 @@ public partial class TaskCreation : System.Web.UI.Page
 
             dbb.tasks.InsertOnSubmit(t);
             dbb.SubmitChanges();
-           
         }
-
     }
 
     private void Validation()
@@ -121,27 +112,27 @@ public partial class TaskCreation : System.Web.UI.Page
         }
         else
         {
-
             lInfoTask.Visible = true;
-            lInfoTask.Text = "Sucessful add task to project";
+            lInfoTask.Text = "Sucessfuly added task to project";
 
             task t = new task
             {
                 name = tbName2.Text,
                 leaderID = Convert.ToInt32(ddlLeader2.SelectedValue),
+                parentID = Convert.ToInt32(ddlTask.SelectedValue),
                 status = ddlStatus2.Text,
                 description = tbDescription2.Text,
                 projectID = Convert.ToInt32(ddlProject2.SelectedValue)
 
             };
-            taskAssignment taskToTask = new taskAssignment
-            {
-                userID = Convert.ToInt32(ddlLeader2.SelectedValue),
-                taskID = Convert.ToInt32(ddlTask.SelectedValue)
-            };
+            //taskAssignment taskToTask = new taskAssignment
+            //{
+            //    userID = Convert.ToInt32(ddlLeader2.SelectedValue),
+            //    taskID = Convert.ToInt32(ddlTask.SelectedValue)
+            //};
 
             dbb.tasks.InsertOnSubmit(t);
-            dbb.taskAssignments.InsertOnSubmit(taskToTask);
+            //dbb.taskAssignments.InsertOnSubmit(taskToTask);
             dbb.SubmitChanges();
         }
 
@@ -160,9 +151,6 @@ public partial class TaskCreation : System.Web.UI.Page
             pnlAddtoTask.Visible = true;
         }
     }
-
-
-
 
 
     protected void ddlTask_SelectedIndexChanged(object sender, EventArgs e)

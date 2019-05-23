@@ -87,16 +87,11 @@
         <tr>
             <td > </td>
             <td>
-                <asp:Label ID="lInfoProject" runat="server" Text="Sucessful add task to project" Visible="False"></asp:Label>
+                <asp:Label ID="lInfoProject" runat="server" Text="successfully added task to project" Visible="False"></asp:Label>
             </td>
             </tr>
     </table> 
         </asp:panel>
-
-
-
-
-
     <asp:panel id="pnlAddtoTask" runat="server">
     <table>
         <tr>
@@ -130,7 +125,7 @@
         </tr>
         <tr>
             <td class="auto-style1">
-                     <asp:Label ID="Label9" runat="server" Text="User"></asp:Label>
+                     <asp:Label ID="Label9" runat="server" Text="Leader"></asp:Label>
             </td>
             <td>
             <asp:DropDownList ID="ddlLeader2" runat="server" AppendDataBoundItems="True" Width="292px" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceLeader" DataTextField="name_lastname" DataValueField="id">
@@ -169,7 +164,7 @@
         <tr>
             <td > </td>
             <td>
-                <asp:Label ID="lInfoTask" runat="server" Text="Sucessful add task to project" Visible="False"></asp:Label>
+                <asp:Label ID="lInfoTask" runat="server" Text="Successfully added task to project" Visible="False"></asp:Label>
             </td>
             </tr>
     </table> 
