@@ -6,101 +6,83 @@
 
 
 
-        <asp:Panel ID="Panel1" runat="server">
-            <table aria-orientation="horizontal" class="auto-style9">
-                <tr>
-                    <td class="auto-style6">Search</td>
-                    <td class="auto-style4">
-                        
-                        <asp:DropDownList ID="DropDownList1" runat="server" CssClass="auto-style8" Width="225px">
-                            <asp:ListItem Selected="True">Login</asp:ListItem>
-                            <asp:ListItem>Name</asp:ListItem>
-                            <asp:ListItem>Surname</asp:ListItem>
-                            <asp:ListItem>Status</asp:ListItem>
-                            <asp:ListItem>Level</asp:ListItem>
-                        </asp:DropDownList>
-                    </td>
-        
-                    
-                </tr>
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Button ID="btnSearch"  CssClass="btn btn-info" runat="server" OnClick="Button1_Click" Text="Search" />
-                    </td>
-                    <td class="auto-style2" >
-                        <asp:TextBox ID="tbLogin" runat="server" AutoCompleteType="Disabled"  Width="220px" style="padding-left"></asp:TextBox>
-                    </td>
 
-                </tr>
-                <tr>
-                    <td class="auto-style7" >
-                                    &nbsp;</td>
-                    <td >
-                        &nbsp;</td>
-                </tr>
+    <div class="card text-center-md shadow  bg-white "style="max-width: 17rem; max-height: 22rem" >
+        <div class="card-header">
+            SEARCH
+            <!-- here should be label-->
+        </div>
+        <div class="card-body">
+            
 
-                </tr>
+                <div class=" row form-check form-check-inline justify-content-center " >
 
-</table>
-            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="LinqDataSource1" DataKeyNames="id" AllowPaging="True"
-                CellPadding="3" ForeColor="#333333" GridLines="Horizontal" Width="80%" AllowSorting="True" CssClass="table-responsive-lg">
-                <AlternatingRowStyle BackColor="White" />
-                <Columns>
-                    <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
-                    
-                    <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" InsertVisible="False" ReadOnly="True" />
-                    <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
-                    <asp:BoundField DataField="surname" HeaderText="surname" SortExpression="surname" />
-                    <asp:BoundField DataField="login" HeaderText="login" SortExpression="login" />
-                    <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" />
-                    <asp:BoundField DataField="level" HeaderText="level" SortExpression="level" />
-                    <asp:BoundField DataField="accountStatus" HeaderText="accountStatus" SortExpression="accountStatus" />
-                </Columns>
-                <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
-                <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
-                <EditRowStyle CssClass="GridViewEditRow" />
-                <SortedAscendingCellStyle BackColor="#FDF5AC" />
-                <SortedAscendingHeaderStyle BackColor="#4D0000" />
-                <SortedDescendingCellStyle BackColor="#FCF6C0" />
-                <SortedDescendingHeaderStyle BackColor="#820000" />
+                    <asp:DropDownList ID="DropDownList1" runat="server"  style="margin-top: 8px"  Width="200px" CssClass="auto-style1">
+                        <asp:ListItem Selected="True">Login</asp:ListItem>
+                        <asp:ListItem>Name</asp:ListItem>
+                        <asp:ListItem>Surname</asp:ListItem>
+                        <asp:ListItem>Status</asp:ListItem>
+                        <asp:ListItem>Level</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
 
-            </asp:GridView>
-            <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LinqDataClassesDataContext"
-                 TableName="users" EnableDelete="True" EnableInsert="True" EnableUpdate="True" EntityTypeName="">
-            </asp:LinqDataSource>
-        </asp:Panel>
+                <div class="row justify-content-center">
+                    <asp:TextBox ID="tbLogin" runat="server" AutoCompleteType="Disabled" style="margin-top: 8px"  Width="200px" CssClass="auto-style1"></asp:TextBox>
+                </div>
+                <div class="row justify-content-center">
+                    <asp:Button ID="btnSearch" CssClass="btn btn-info" runat="server" OnClick="Button1_Click" Text="Search" />
+                </div>
+            
+        </div>
+    </div>
 
-        </asp:Content>
-<asp:Content ID="Content1" runat="server" contentplaceholderid="head">
+
+
+    <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataSourceID="LinqDataSource1" DataKeyNames="id" AllowPaging="True"
+        CellPadding="3" ForeColor="#333333" GridLines="Horizontal" Width="80%" AllowSorting="True" CssClass="table-responsive-lg">
+        <AlternatingRowStyle BackColor="White" />
+        <Columns>
+            <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
+
+            <asp:BoundField DataField="id" HeaderText="id" SortExpression="id" InsertVisible="False" ReadOnly="True" />
+            <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+            <asp:BoundField DataField="surname" HeaderText="surname" SortExpression="surname" />
+            <asp:BoundField DataField="login" HeaderText="login" SortExpression="login" />
+            <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" Visible="False" />
+            <asp:BoundField DataField="level" HeaderText="level" SortExpression="level" />
+            <asp:BoundField DataField="accountStatus" HeaderText="accountStatus" SortExpression="accountStatus" />
+        </Columns>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+        <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+        <EditRowStyle CssClass="GridViewEditRow" />
+        <SortedAscendingCellStyle BackColor="#FDF5AC" />
+        <SortedAscendingHeaderStyle BackColor="#4D0000" />
+        <SortedDescendingCellStyle BackColor="#FCF6C0" />
+        <SortedDescendingHeaderStyle BackColor="#820000" />
+
+    </asp:GridView>
+    <asp:LinqDataSource ID="LinqDataSource1" runat="server" ContextTypeName="LinqDataClassesDataContext"
+        TableName="users" EnableDelete="True" EnableInsert="True" EnableUpdate="True" EntityTypeName="">
+    </asp:LinqDataSource>
+
+
+</asp:Content>
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
     <style type="text/css">
-        .auto-style2 {
-            height: 44px;
+        
+        .GridViewEditRow input[type=text] {
+            width: 100px;
         }
-        .auto-style4 {
-            width: 194px;
+        /* size textboxes */
+        .GridViewEditRow select {
+            width: 50px;
         }
-        .auto-style6 {
-            height: 44px;
-            width: 99px;
-        }
-        .auto-style7 {
-            width: 99px;
-        }
-        .auto-style8 {
-            margin-left: 21;
-        }
-        .GridViewEditRow input[type=text]
-        {width:100px;
-
-        } /* size textboxes */
-        .GridViewEditRow select 
-        {width:50px;} /* size drop down lists */
-        .auto-style9 {
-            height: 44px;
-            width: 376px;
+        /* size drop down lists */
+        .auto-style1 {
+            margin-left: 0;
         }
     </style>
-    </asp:Content>
+</asp:Content>

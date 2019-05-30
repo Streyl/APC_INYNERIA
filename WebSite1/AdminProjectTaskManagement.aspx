@@ -6,48 +6,46 @@
 
 
         <asp:Panel ID="Panel1" runat="server">
-            <table >
-                <tr>
-                    <td>
+            <div class="card col-4" style="max-width: 17rem; max-height: 15rem; height:10rem">
+
+                <div class="card-header">
+                    Search
+                </div>
+                  <div class="card-body">
+                    <div class="row justify-content-center">
+            <div class=" row form-check form-check-inline">
                         <asp:RadioButtonList ID="ChooseFunction" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ChooseFunction_SelectedIndexChanged" RepeatDirection="Horizontal">
                             <asp:ListItem>Project</asp:ListItem>
                             <asp:ListItem>Task</asp:ListItem>
-                            <asp:ListItem>Subtask</asp:ListItem>
                         </asp:RadioButtonList>
-                    </td>
-                </tr>
-                </table>
+                  </div>
+        </div>
+                      </div>
+                </div>
             <asp:Panel ID="pnlProjectGridView" runat="server" Visible="False">
-            <table aria-orientation="horizontal" class="auto-style9">
+           
 
-                </tr>
-                <tr>
+              <div class="card col-6" style="max-width: 17rem; max-height: 22rem">
+                <div class="card-header h-25">
+                    Search
+                </div>
 
-                         <td>
+                <div class="card-body">
+                    <div class="row justify-content-center">
                              <asp:DropDownList ID="ddlSearchProject" runat="server" Width="219px">
                                  <asp:ListItem>Name</asp:ListItem>
                                  <asp:ListItem>Status</asp:ListItem>
                                  <asp:ListItem>CreatorID</asp:ListItem>
                              </asp:DropDownList>
-                         </td>
-                </tr>
-
-                <tr>
-                    <td>
+                         </div>
+                    <div class="row justify-content-center">
                         <asp:TextBox ID="tbSearchProject" runat="server" AutoCompleteType="Disabled" OnTextChanged="tbSearchProject_TextChanged"></asp:TextBox>
-                    </td>
-                    <td>
+                  
                         <asp:Button ID="btnSearchProject" runat="server" Text="Search" OnClick="btnSearchProject_Click" />
-                    </td>
-                </tr>
-                </tr>
+                    </div>
+                </div>
+            </div>
 
-                <tr>
-                    <td>
-                        &nbsp;</td>
-                </tr>
-
-</table>
                         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource1" Width="90%" ForeColor="#333333" GridLines="None" PageSize="15" CssClass="table-responsive-lg" OnRowDeleting="GridView1_RowDeleting">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
@@ -170,48 +168,39 @@
 
             <asp:Panel ID="pnlTaskGridView" runat="server" Visible="False">
 
-                            <table aria-orientation="horizontal" class="auto-style9">
+                           
+              <div class="card col-6" style="max-width: 17rem; max-height: 22rem">
+                <div class="card-header h-25">
+                    Search
+                </div>
 
-                </tr>
-                <tr>
-                    <td>
-                    
-                        <asp:DropDownList ID="ddlChooseProject" runat="server" Width="200px" CssClass="auto-style1" Enabled="False">
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <asp:DropDownList ID="ddlChooseProject" runat="server" Width="200px" CssClass="auto-style1" Enabled="False" style="margin-top:4px; margin-bottom:0px">
                         </asp:DropDownList>
-                    
-                        <asp:CheckBox ID="cbChooseProject" runat="server" AutoPostBack="True" OnCheckedChanged="cbChooseProject_CheckedChanged" Text=" " />
-                    
-                    </td>
-                    <td>
-                        <asp:Label ID="Label1" runat="server" Text="Choose Project"></asp:Label>
-                    </td>
-
-                </tr>
-                                <tr>
-                                    <td>
-                                        <asp:DropDownList ID="ddlSearchTask" runat="server" Width="229px">
+                    </div >
+                     <div class="row justify-content-center">
+                        <asp:CheckBox ID="cbChooseProject" runat="server" AutoPostBack="True" OnCheckedChanged="cbChooseProject_CheckedChanged" Text=" " style="margin-top:0px"/>
+                    </div>
+                    <div class="row justify-content-center">
+                        <asp:Label ID="Label1" runat="server" Text="Choose Project" style="margin-top:4px"></asp:Label>
+                        </div>
+                   <div class="row justify-content-center">
+                                        <asp:DropDownList ID="ddlSearchTask" runat="server" Width="229px" style="margin-top:4px">
                                             <asp:ListItem>Name</asp:ListItem>
                                             <asp:ListItem>Status</asp:ListItem>
                                             <asp:ListItem>LeaderID</asp:ListItem>
                                         </asp:DropDownList>
-                                        </td>
-                                    <td>
-                                        </td>
-                                    </tr>
-                <tr>
-                    <td>
-                        <asp:TextBox ID="tbSearchTask" runat="server" AutoCompleteType="Disabled"></asp:TextBox>
-                    </td>
-                    <td >
-                        <asp:Button ID="btnSearchTask" runat="server" Text="Search" OnClick="btnSearchTask_Click" />
-                    </td>
-                </tr>
-
-                </tr>
-
-</table>
-
-
+                                       </div>
+                          <div class="row justify-content-center">
+                        <asp:TextBox ID="tbSearchTask" runat="server" AutoCompleteType="Disabled" style="margin-top:4px"></asp:TextBox>
+                  </div>
+                          <div class="row justify-content-center">
+                        <asp:Button ID="btnSearchTask" runat="server" Text="Search" OnClick="btnSearchTask_Click" style="margin-top:4px"/>
+                    </div>
+</div>
+                    </div>
+                 
 
                 &nbsp;<asp:GridView ID="gridviewTask"  runat="server" AutoGenerateColumns="False" AutoGenerateEditButton="True" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource2" Width="80%" AllowPaging="True" AllowSorting="True" ForeColor="#333333" GridLines="None" CssClass="table-responsive-md" OnRowDeleting="gridviewTask_RowDeleting">
                     <AlternatingRowStyle BackColor="White" />
