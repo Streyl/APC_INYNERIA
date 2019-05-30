@@ -1,25 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 public partial class Login : System.Web.UI.Page
 {
+
+
     LinqDataClassesDataContext BaseDB = new LinqDataClassesDataContext();
     public static bool isLogIn;
 
     bool IsUserExist(string userLogin, string userPassword, out user logged)//if user is already log in is true
     {
-        string savedPasswordHash = BaseDB.users.Where(x => x.login == tbLogin.Text).Select(x => x.password).Single();
-        byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
-        PasswordHash hash = new PasswordHash(hashBytes);
-
-        if(hash.Verify(tbPassword.Text))
+        
+        var q = from p in BaseDB.users
+                where p.login == tbLogin.Text
+                && p.password == tbPassword.Text
+                && p.accountStatus == 1 // account is active? Check whats mean number in account status
+                select p;
+        if (q.Count() == 1)
         {
-            logged = BaseDB.users.Where(x => x.login == tbLogin.Text).First();
+            logged = q.First();
             return true;
         }
         else
@@ -28,11 +31,14 @@ public partial class Login : System.Web.UI.Page
             return false;
         }
     }
-
     protected void Page_Load(object sender, EventArgs e)
     {
         object o = Session["User"]; 
+        
+        
     }
+    
+
 
     protected void bConfirm_Click(object sender, EventArgs e)
     {
@@ -42,11 +48,17 @@ public partial class Login : System.Web.UI.Page
             Session["UserLogIn"] = tbLogin.Text;
             Session["User"] = logged;
             Session["Level"] = logged.level;
-            Response.Redirect("default.aspx");   
+            Response.Redirect("default.aspx");
+            
         }
         else
         {
+
             lblWrongSignIn.Visible = true;
         }
+
     }
+
+    
+
 }

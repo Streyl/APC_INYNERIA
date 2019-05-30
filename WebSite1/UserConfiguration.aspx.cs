@@ -24,7 +24,7 @@ public partial class UserConfiguration : System.Web.UI.Page
 
     protected void bSubmitChange_Click(object sender, EventArgs e)
     {
-        if(tbOldPassword.Text!= (Session["User"] as user).password)
+        if (tbOldPassword.Text != (Session["User"] as user).password)
         {
             lbErrorMessageDown.Visible = true;
             lbErrorMessageDown.ForeColor = System.Drawing.Color.Red;
@@ -33,9 +33,9 @@ public partial class UserConfiguration : System.Web.UI.Page
         }
         else
         {
-            if(Regex.IsMatch(tbNewPassword.Text, "[A-Z]"))
+            if (Regex.IsMatch(tbNewPassword.Text, "[A-Z]"))
             {
-                if(tbNewPassword.Text.Length < 6 || tbNewPassword.Text.Length > 32)
+                if (tbNewPassword.Text.Length < 6 || tbNewPassword.Text.Length > 32)
                 {
                     lbErrorMessageDown.Visible = true;
                     lbErrorMessageDown.ForeColor = System.Drawing.Color.Red;
@@ -44,7 +44,7 @@ public partial class UserConfiguration : System.Web.UI.Page
                 }
                 else
                 {
-                    if(tbNewPassword.Text!=tbConfirmPassword.Text)
+                    if (tbNewPassword.Text != tbConfirmPassword.Text)
                     {
                         lbErrorMessageDown.Visible = true;
                         lbErrorMessageDown.ForeColor = System.Drawing.Color.Red;
@@ -71,12 +71,12 @@ public partial class UserConfiguration : System.Web.UI.Page
                 lbErrorMessageDown.Text = "You should add at least 1 capital letter";
             }
         }
-        
+
     }
 
     protected void bSubmitNameSirname_Click(object sender, EventArgs e)
     {
-        if (tbChangeName.Text == "" || tbChangeName.Text.Length>50)
+        if (tbChangeName.Text == "" || tbChangeName.Text.Length > 50)
         {
             tbChangeName.Text = (Session["User"] as user).name;
             tbChangeSirname.Text = (Session["User"] as user).surname;
@@ -84,7 +84,7 @@ public partial class UserConfiguration : System.Web.UI.Page
             lbErrorMessageUP.ForeColor = System.Drawing.Color.Red;
             lbErrorMessageUP.Text = "Problem with you'r Name, please Change it and try again. MAX 50 charachters";
         }
-        else if (tbChangeSirname.Text == "" || tbChangeSirname.Text.Length>50)
+        else if (tbChangeSirname.Text == "" || tbChangeSirname.Text.Length > 50)
         {
             tbChangeName.Text = (Session["User"] as user).name;
             tbChangeSirname.Text = (Session["User"] as user).surname;
@@ -92,7 +92,7 @@ public partial class UserConfiguration : System.Web.UI.Page
             lbErrorMessageUP.ForeColor = System.Drawing.Color.Red;
             lbErrorMessageUP.Text = "Problem with you'r Sirname, please Change it and try again. MAX 50 charachters";
         }
-        else if(tbChangeName.Text == "" && tbChangeSirname.Text == "")
+        else if (tbChangeName.Text == "" && tbChangeSirname.Text == "")
         {
             tbChangeName.Text = (Session["User"] as user).name;
             tbChangeSirname.Text = (Session["User"] as user).surname;
@@ -102,17 +102,17 @@ public partial class UserConfiguration : System.Web.UI.Page
         }
         else
         {
-                user uu = BaseDB.users.Single(u => u.id == (Session["User"] as user).id);
+            user uu = BaseDB.users.Single(u => u.id == (Session["User"] as user).id);
 
-                uu.name = tbChangeName.Text;
-                uu.surname = tbChangeSirname.Text;
-                lbErrorMessageUP.Visible = true;
-                lbErrorMessageUP.ForeColor = System.Drawing.Color.Green;
-                lbErrorMessageUP.Text = "Done";
+            uu.name = tbChangeName.Text;
+            uu.surname = tbChangeSirname.Text;
+            lbErrorMessageUP.Visible = true;
+            lbErrorMessageUP.ForeColor = System.Drawing.Color.Green;
+            lbErrorMessageUP.Text = "Done";
 
-                 BaseDB.SubmitChanges();
+            BaseDB.SubmitChanges();
 
-                Session["User"] = uu;
+            Session["User"] = uu;
         }
 
     }

@@ -48,7 +48,7 @@
                 </tr>
 
 </table>
-                        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource1" Width="90%" ForeColor="#333333" GridLines="None" PageSize="15" CssClass="table-responsive-lg" OnRowDeleting="GridView1_RowDeleting">
+                        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource1" Width="90%" ForeColor="#333333" GridLines="None" PageSize="15" CssClass="table-responsive-lg">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
                                 <asp:CommandField ShowDeleteButton="True" >
@@ -58,96 +58,24 @@
                                 <ControlStyle Font-Size="Smaller" />
                                 <ItemStyle Font-Size="Small" />
                                 </asp:CommandField>
-                                <asp:TemplateField HeaderText="Id" InsertVisible="False" SortExpression="id">
-                                    <EditItemTemplate>
-                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("id") %>'></asp:Label>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label9" runat="server" Text='<%# Bind("id") %>'></asp:Label>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Name" SortExpression="name">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox8" runat="server" Text='<%# Bind("name") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label8" runat="server" Text='<%# Bind("name") %>'></asp:Label>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Creator" SortExpression="creatorID">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox7" runat="server" Text='<%# Bind("creatorID") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label7" runat="server" Text='<%# Bind("creatorID") %>'></asp:Label>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Created" SortExpression="creationDate">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox6" runat="server" Text='<%# Bind("creationDate") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label6" runat="server" Text='<%# Bind("creationDate", "{0:d}") %>'></asp:Label>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Start" SortExpression="startDate">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("startDate") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("startDate", "{0:d}") %>'></asp:Label>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="End" SortExpression="endDate">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("endDate") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("endDate", "{0:d}") %>'></asp:Label>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Status" SortExpression="status">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("status") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <div style="word-break:break-all; word-wrap:break-word";>
-                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("status") %>'></asp:Label>
-                                        </div>
-                                    </ItemTemplate>
-                                    <ItemStyle Width="100px" HorizontalAlign="Center" VerticalAlign="Middle" />
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Description" SortExpression="description">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("description") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <div style="word-break:break-all; word-wrap:break-word";>
-                                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("description", "{0:c5}") %>'></asp:Label>
-                                        </div>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="250px" />
-                                </asp:TemplateField>
-                                <asp:TemplateField HeaderText="Remarks" SortExpression="remarks">
-                                    <EditItemTemplate>
-                                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("remarks") %>'></asp:TextBox>
-                                    </EditItemTemplate>
-                                    <ItemTemplate>
-                                        <div style="word-break:break-all; word-wrap:break-word";>
-                                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("remarks") %>'></asp:Label>
-                                        </div>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="250px" />
-                                </asp:TemplateField>
+                                <asp:BoundField DataField="id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                                <asp:BoundField DataField="name" HeaderText="Name" SortExpression="name" />
+                                <asp:BoundField DataField="creatorID" HeaderText="Creator" SortExpression="creatorID">
+                                <ItemStyle Width="10px" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="creationDate" DataFormatString="{0:d}" HeaderText="Created" SortExpression="creationDate" />
+                                <asp:BoundField DataField="startDate" DataFormatString="{0:d}" HeaderText="Start" SortExpression="startDate" />
+                                <asp:BoundField DataField="endDate" DataFormatString="{0:d}" HeaderText="End" SortExpression="endDate" />
+                                <asp:BoundField DataField="status" HeaderText="Status" SortExpression="status" />
+                                <asp:BoundField DataField="description" DataFormatString="{0:c5}" HeaderText="Description" SortExpression="description" >
+                                <ItemStyle Width="10px" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="remarks" HeaderText="Remarks" SortExpression="remarks">
+                                <ItemStyle Width="20px" />
+                                </asp:BoundField>
                             </Columns>
 
-           
+                            <EditRowStyle Width="15%" />
 
                             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -213,7 +141,7 @@
 
 
 
-                &nbsp;<asp:GridView ID="gridviewTask"  runat="server" AutoGenerateColumns="False" AutoGenerateEditButton="True" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource2" Width="80%" AllowPaging="True" AllowSorting="True" ForeColor="#333333" GridLines="None" CssClass="table-responsive-md" OnRowDeleting="gridviewTask_RowDeleting">
+                &nbsp;<asp:GridView ID="gridviewTask"  runat="server" AutoGenerateColumns="False" AutoGenerateEditButton="True" CellPadding="4" DataKeyNames="id" DataSourceID="LinqDataSource2" Width="80%" AllowPaging="True" AllowSorting="True" ForeColor="#333333" GridLines="None" CssClass="table-responsive-md">
                     <AlternatingRowStyle BackColor="White" />
                     <Columns>
                         <asp:CommandField ShowDeleteButton="True" />
