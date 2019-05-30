@@ -23,19 +23,36 @@
     
 
         
-            <nav class="navbar navbar-dark bg-dark">
-                <!-- UPER MENU -->
-                <div class="col-2"> </div>
-                <div class="col-8">
-                <a ID="bAbout" role="button" class="btn btn-outline-info " href="Default.aspx">About</a>
-                <a ID="bContact" role="button" class="btn btn-outline-info" href="Contact.aspx">Contact</a>
-                </div> 
-                    <div class="col-1 d-flex justify-content-end">
-                <asp:Button ID="bRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" class="btn btn-outline-info"   BorderColor="Lavender" UseSubmitBehavior="False" />
-                        <asp:Button ID="bAdminProjectManage" runat="server" Text="Manage Project"  class="btn btn-primary" BorderColor="Lavender"  Visible="False" UseSubmitBehavior="False" OnClick="bAdminManageProject_Click"/>
-                 <asp:Button ID="bAdminManageUsers" runat="server" Text="Manage Users"  class="btn btn-primary" BorderColor="Lavender" OnClick="bAdminManageUsers_Click" Visible="False" UseSubmitBehavior="False"/>
-                <asp:Button ID="bLogout" runat="server" Text="Logout" OnClick="bLogout_Click" class="btn btn-outline-success" BorderColor="Lavender" UseSubmitBehavior="False"/>
-                   </div>
+   
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark " >
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse " id="navbarNav">
+                    <!-- UPER MENU -->
+                   <div class="col-2"></div>
+                    <div class="col-8">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+
+                                <asp:Button ID="bUpperMenuDefault" runat="server" Text="Default" UseSubmitBehavior="False" href="Default.aspx" CssClass="btn btn-outline-info" OnClick="bDefault_Click1"/>
+                                <asp:Button ID="bUpperMenuContact" runat="server" Text="Contact" UseSubmitBehavior="False" href="Contact.aspx" CssClass="btn btn-outline-info" OnClick="bContact_Click"/>
+         
+
+                            <li class="nav-item">
+                            <asp:Button ID="bUpperMenuAdminProjectManage" runat="server" Text="Manage Project"  class="btn btn-primary" BorderColor="Lavender"  Visible="False" UseSubmitBehavior="False" OnClick="bAdminManageProject_Click"/>
+                            <asp:Button ID="bUpperMenuAdminManageUsers" runat="server" Text="Manage Users"  class="btn btn-primary" BorderColor="Lavender" OnClick="bAdminManageUsers_Click" Visible="False" UseSubmitBehavior="False"/>
+                            </li>
+                            <li>
+                            <asp:Button ID="bUpperMenuRegistration" runat="server" OnClick="bRegistration_Click" Text="Registration" class="btn btn-outline-info"   BorderColor="Lavender" UseSubmitBehavior="False" />
+                            <asp:Button ID="bUpperMenuLogout" runat="server" Text="Logout" OnClick="bLogout_Click" class="btn btn-outline-success" BorderColor="Lavender" UseSubmitBehavior="False"/>
+                            </li>
+                         </ul>
+                    </div> 
+                    
+                </div>
                 <!-- END UPER MENU -->
             </nav>
         <div class="container-fluid">
@@ -60,6 +77,9 @@
                             
                        </div> </asp:Panel>
                         </div>
+
+                    <!-- END LEFT MENU -->
+                <!-- PAGE CONTENT-->
                     <div class="jumbotron col-8 shadow p-3 mb-5 bg-white rounded width:auto"  >
                         
                         <div class="align-content-center shadow p-3 mb-5  rounded" style="background-color: lightgrey;">  
@@ -79,23 +99,12 @@
                     </div>
                     </div>
 
-
-                    <!-- END LEFT MENU -->
-
-                <!-- PAGE CONTENT-->
-               
                 <!-- END PAGE CONTENT -->
+
+               
             </div>
         
-                <!-- FOOTER -->
-            <div class="row">
-               <!--
-            <div class="col-md-12" style="background-color: green">
-            FOOTER FOOTER FOOTER                 
-            </div>
-               -->
-            </div>
-                <!-- END FOOTER-->
+            
 
        
 

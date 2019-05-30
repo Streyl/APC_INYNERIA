@@ -13,14 +13,22 @@ public partial class Login : System.Web.UI.Page
 
     bool IsUserExist(string userLogin, string userPassword, out user logged)//if user is already log in is true
     {
-        string savedPasswordHash = BaseDB.users.Where(x => x.login == tbLogin.Text).Select(x => x.password).Single();
-        byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
-        PasswordHash hash = new PasswordHash(hashBytes);
-
-        if(hash.Verify(tbPassword.Text))
+        if (tbLogin.Text != "" && tbPassword.Text != "")
         {
-            logged = BaseDB.users.Where(x => x.login == tbLogin.Text).First();
-            return true;
+            string savedPasswordHash = BaseDB.users.Where(x => x.login == tbLogin.Text).Select(x => x.password).Single();
+            byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
+            PasswordHash hash = new PasswordHash(hashBytes);
+
+            if (hash.Verify(tbPassword.Text))
+            {
+                logged = BaseDB.users.Where(x => x.login == tbLogin.Text).First();
+                return true;
+            }
+            else
+            {
+                logged = null;
+                return false;
+            }
         }
         else
         {
@@ -31,6 +39,7 @@ public partial class Login : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
+
         object o = Session["User"]; 
     }
 
@@ -47,6 +56,8 @@ public partial class Login : System.Web.UI.Page
         else
         {
             lblWrongSignIn.Visible = true;
+            tbLogin.Text = "";
+            tbPassword.Text = "";
         }
     }
 }

@@ -2,37 +2,80 @@
 
 
 <asp:Content ID="BodyProjectCreation" ContentPlaceHolderID="MainContent" runat="server">
-        <asp:Label ID="lblName" runat="server" Text="Name:"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtName" runat="server" MaxLength="50" TabIndex="1"></asp:TextBox>
-        <asp:Label ID="lblNameError" runat="server" ForeColor="Red" Visible="False"></asp:Label>
-        <br />
-        <asp:Label ID="lblStartDate" runat="server" Text="Start date:"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtStartDate" runat="server" TextMode="Date" TabIndex="2"></asp:TextBox>
-        <asp:Label ID="lblStartDateError" runat="server" ForeColor="Red" Visible="False"></asp:Label>
-        <br />
-        <asp:Label ID="lblEndDate" runat="server" Text="End date:"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtEndDate" runat="server" TextMode="Date" TabIndex="3"></asp:TextBox>
-        <asp:Label ID="lblEndDateError" runat="server" ForeColor="Red"></asp:Label>
-        <br />
-        <asp:Label ID="lblStatus" runat="server" Text="Status:"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtStatus" runat="server" MaxLength="50" TabIndex="4"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblDescription" runat="server" Text="Description:"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtDescription" runat="server" Rows="10" TextMode="MultiLine" Width="600px" MaxLength="4000" style = "resize:none" TabIndex="5" Height="200px"></asp:TextBox>
-        <br />
-        <br />
-        <asp:Label ID="lblRemarks" runat="server" Text="Remarks:"></asp:Label>
-        <br />
-        <asp:TextBox ID="txtRemarks" runat="server" MaxLength="200" Rows="5" TextMode="MultiLine" Width="600px" style = "resize:none" TabIndex="6" Height="100px"></asp:TextBox>
-        <br />
-        <br />
-        <asp:Button ID="btnCreateProject" runat="server" OnClick="btnCreateProject_Click" Text="Create Project" />
-        <br />
-        <asp:Label ID="lblProjectCreationSucces" runat="server" Text="Project succesfully created!" Visible="False"></asp:Label>
-        <br />
-  </asp:Content>
+
+
+    <div class="card text-center-md shadow mb-2 bg-white ">
+
+        <div class="card-header">
+            Project Creator 
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <asp:label id="lblName" style="margin-top: 14px" runat="server" text="Name:"></asp:label>
+            </div>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:textbox id="txtName"  style="margin-top: 3px" runat="server" maxlength="50" tabindex="1" AutoCompleteType="Disabled"></asp:textbox>
+        </div>
+        <div class="row justify-content-center">
+            <asp:label id="lblNameError" style="margin-top: 14px" runat="server" forecolor="Red" visible="False"></asp:label>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:label id="lblStartDate" style="margin-top: 14px" runat="server" text="Start date:"></asp:label>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:textbox id="txtStartDate"  style="margin-top: 3px" runat="server" textmode="Date" tabindex="2" AutoCompleteType="Disabled"></asp:textbox>
+        </div>
+        <div class="row justify-content-center">
+            <asp:label id="lblStartDateError" style="margin-top: 14px" runat="server" forecolor="Red" visible="False"></asp:label>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:label id="lblEndDate" style="margin-top: 14px" runat="server" text="End date:"></asp:label>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:textbox id="txtEndDate"  style="margin-top: 3px" runat="server" textmode="Date" tabindex="3" AutoCompleteType="Disabled"></asp:textbox>
+        </div>
+        <div class="row justify-content-center">
+            <asp:label id="lblEndDateError" style="margin-top: 14px" runat="server" forecolor="Red"></asp:label>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:label id="lblStatus" style="margin-top: 14px" runat="server" text="Status:"></asp:label>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:textbox id="txtStatus"  style="margin-top: 3px" runat="server" maxlength="50" tabindex="4" AutoCompleteType="Disabled"></asp:textbox>
+        </div>
+        <div class="row justify-content-center">
+            <asp:label id="lblDescription" style="margin-top: 14px" runat="server" text="Description:"></asp:label>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:textbox id="txtDescription"   runat="server" rows="10" textmode="MultiLine" width="600px" maxlength="4000" style="resize: none; margin-top: 3px" tabindex="5" height="200px" AutoCompleteType="Disabled"></asp:textbox>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:label id="lblRemarks" style="margin-top: 14px" runat="server" text="Remarks:"></asp:label>
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:textbox id="txtRemarks"  runat="server" maxlength="200" rows="5" textmode="MultiLine" width="600px" style="resize: horizontal; margin-top: 3px" tabindex="6" height="100px" AutoCompleteType="Disabled"></asp:textbox>
+
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:button id="btnCreateProject" runat="server" onclick="btnCreateProject_Click" text="Create Project" />
+
+        </div>
+        <div class="row justify-content-center">
+            <asp:label id="lblProjectCreationSucces" style="margin-top: 14px" runat="server" text="Project succesfully created!" visible="False"></asp:label>
+
+        </div>
+    </div>
+    
+</asp:Content>
