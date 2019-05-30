@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="UserConfiguration" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Project_Stats.aspx.cs" Inherits="Project_Stats" %>
 
 	<asp:Content ID="IDPageBody" ContentPlaceHolderID="MainContent" runat="server">
+        Without Graphs
         <table>
             <tr>
                 <td cosplan="2">
-                    Project Stats
+                    Project Stats 
 
                 </td>
             </tr>
