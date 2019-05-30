@@ -12,32 +12,32 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (Session["UserLogIn"] != null)
         {
             
-            bLogout.Text = "Logout";
+            bUpperMenuLogout.Text = "Logout";
             MainContent.Visible = true;
             NotLogInContent.Visible = false;
-            bRegistration.Visible = false;
+            bUpperMenuRegistration.Visible = false;
             pnlLeftMenu.Visible = true;
         }
         else
         {
-           bLogout.Text = "Log In";
+           bUpperMenuLogout.Text = "Log In";
             MainContent.Visible = false;
             NotLogInContent.Visible = true;
             pnlLeftMenu.Visible = false;
-            bAdminManageUsers.Visible = false;
+            bUpperMenuAdminManageUsers.Visible = false;
         }
         int ra = 1;
          ra = Convert.ToInt32(Session["Level"]);
         if(ra==0 && Session["UserLogIn"]!=null)
         {
-            bAdminManageUsers.Visible = true;
-            bAdminProjectManage.Visible = true;
+            bUpperMenuAdminManageUsers.Visible = true;
+            bUpperMenuAdminProjectManage.Visible = true;
 
         }
         else
         {
-            bAdminManageUsers.Visible = false;
-            bAdminProjectManage.Visible = false;
+            bUpperMenuAdminManageUsers.Visible = false;
+            bUpperMenuAdminProjectManage.Visible = false;
         }
       
     }
@@ -48,7 +48,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         if (Session["UserLogIn"] != null)
         {
             Session["UserLogIn"] = null;
-            bLogout.Text = "Log In";
+            bUpperMenuLogout.Text = "Log In";
             Response.Redirect("Login.aspx");
         }
         else
@@ -86,5 +86,15 @@ public partial class MasterPage : System.Web.UI.MasterPage
     protected void bAdminManageProject_Click(object sender, EventArgs e)
     {
         Response.Redirect("AdminProjectTaskManagement.aspx");
+    }
+
+    protected void bDefault_Click1(object sender, EventArgs e)
+    {
+        Response.Redirect("Default.aspx");
+    }
+
+    protected void bContact_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Contact.aspx");
     }
 }

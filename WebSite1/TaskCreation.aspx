@@ -3,198 +3,189 @@
 
 <asp:Content ID="BodyTaskCreation" ContentPlaceHolderID="MainContent" runat="server">
 
-   
-    <table >
-        <tr>
-            <td class="auto-style1">
-                <asp:Label ID="Label12" runat="server" Text="Add To"></asp:Label>
-            </td>
-            <td>
-                <asp:RadioButtonList ID="rblChoose" runat="server" AutoPostBack="True" RepeatDirection="Horizontal" TextAlign="Left" Width="274px" OnSelectedIndexChanged="rblChoose_SelectedIndexChanged" CssClass="auto-style2">
-                    <asp:ListItem Selected="True">Project</asp:ListItem>
-                    <asp:ListItem>Task</asp:ListItem>
-                </asp:RadioButtonList>
-            </td>
-            </tr>
-        </table>
-    
-    <div class="card text-white bg-success mb-3" style="max-width: 28rem;">
-  <div class="card-header">Add to project</div> <!-- add label with change text  -->
-  <div class="card-body" style="max-width: 28rem">
 
 
-    <asp:panel id="pnlAddtoProject" runat="server">
-    <table>
-        <tr>
-             <td>
-            <asp:Label ID="Label5" runat="server" Text="Project" ></asp:Label>
-              </td>
-              <td>
-                        <asp:DropDownList ID="ddlProject" runat="server" Width="296px" AppendDataBoundItems="True" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceProject" DataTextField="name" DataValueField="id">
-                        </asp:DropDownList>
-                        <asp:LinqDataSource ID="LinqDataSourceProject" runat="server" ContextTypeName="LinqDataClassesDataContext" EntityTypeName="" Select="new (id, name)" TableName="projects">
-                        </asp:LinqDataSource>
-              </td>
-        </tr>
-        <tr>
-        <td class="auto-style1" aria-pressed="undefined">
-            <asp:Label ID="Label1" runat="server" Text="Name"></asp:Label>
-            </td>
-            <td>
-            <asp:TextBox ID="tbName" runat="server" Width="286px" AutoCompleteType="Disabled" MaxLength="50" ></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="auto-style1">
-                     <asp:Label ID="Label2" runat="server" Text="Leader"></asp:Label>
-            </td>
-            <td>
-            <asp:DropDownList ID="ddlLeader" runat="server" AppendDataBoundItems="True" Width="293px" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceLeader" DataTextField="name_lastname" DataValueField="id">
-            </asp:DropDownList>
-                <asp:LinqDataSource ID="LinqDataSourceLeader" runat="server" ContextTypeName="LinqDataClassesDataContext" EntityTypeName="" Select="new (id, name, name_lastname)" TableName="users">
-                </asp:LinqDataSource>
-            </td>
-        </tr>
-         <tr>
-             <td class="auto-style1">
-                     <asp:Label ID="Label3" runat="server" Text="Status"></asp:Label>
-             </td>
-             <td>
-            <asp:DropDownList ID="ddlStatus" runat="server" Width="293px" AppendDataBoundItems="True" EnableViewState="False" CssClass="btn btn-secondary dropdown-toggle">
-                <asp:ListItem>Undone</asp:ListItem>
-                <asp:ListItem>Finish</asp:ListItem>
-                <asp:ListItem>Cancel</asp:ListItem>
-                <asp:ListItem>Pause</asp:ListItem>
-            </asp:DropDownList>
+    <div class="card text-center-sm shadow col-4 " style="height:100px">
+        <div class="card-header-lg  w-100" style="width: 16rem">
+            <asp:Label ID="Label12" runat="server" Text="Add To" CssClass="w-25"></asp:Label>
+        </div>
 
-            </td>
-         </tr>
-         <tr>
-            <td class="auto-style1">
-                     <asp:Label ID="Label4" runat="server" Text="Description"></asp:Label>
-            </td>
-            <td >
-            <asp:TextBox ID="tbDescription" runat="server" Height="224px" Width="291px" TextMode="MultiLine" AutoCompleteType="Disabled" MaxLength="4000"></asp:TextBox>
-
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td >
-                <asp:Button ID="bSubmit" runat="server" OnClick="bSubmit_Click" Text="Submit" Width="296px" CssClass="center"/>
-            </td>
-        </tr>
-        <tr>
-            <td > </td>
-            <td>
-                <asp:Label ID="lInfoProject" runat="server" Text="Sucessful add task to project" Visible="False"></asp:Label>
-            </td>
-            </tr>
-    </table> 
-        </asp:panel>
-
-
-
-
-
-    <asp:panel id="pnlAddtoTask" runat="server">
-    <table>
-        <tr>
-             <td>
-            <asp:Label ID="Label7" runat="server" Text="Project" ></asp:Label>
-              </td>
-              <td>
-                        <asp:DropDownList ID="ddlProject2" runat="server" Width="290px" AppendDataBoundItems="True" CssClass="btn btn-secondary dropdown-toggle" AutoPostBack="True" DataSourceID="LinqDataSourceProject" DataTextField="name" DataValueField="id">
-                        </asp:DropDownList>
-              </td>
-        </tr>
-        <tr>
-            <td>Task</td>
-            <td>
-                <asp:DropDownList ID="ddlTask" runat="server" Width="289px" CssClass="btn btn-secondary dropdown-toggle" style="margin-top: 2" OnSelectedIndexChanged="ddlTask_SelectedIndexChanged" DataSourceID="LinqDataSourceTask" DataTextField="name_task" DataValueField="id">
-                </asp:DropDownList>
-                <asp:LinqDataSource ID="LinqDataSourceTask" runat="server" ContextTypeName="LinqDataClassesDataContext" EntityTypeName="" Select="new (id, name, projectID, name_task)" TableName="tasks" Where="projectID == @projectID">
-                    <WhereParameters>
-                        <asp:ControlParameter ControlID="ddlProject2" Name="projectID" PropertyName="SelectedValue" Type="Int32" />
-                    </WhereParameters>
-                </asp:LinqDataSource>
-            </td>
-        </tr>
-        <tr>
-        <td class="auto-style1" aria-pressed="undefined">
-            <asp:Label ID="Label8" runat="server" Text="Name"></asp:Label>
-            </td>
-            <td>
-            <asp:TextBox ID="tbName2" runat="server" Width="286px" AutoCompleteType="Disabled" MaxLength="50" ></asp:TextBox>
-            </td>
-        </tr>
-        <tr>
-            <td class="auto-style1">
-                     <asp:Label ID="Label9" runat="server" Text="User"></asp:Label>
-            </td>
-            <td>
-            <asp:DropDownList ID="ddlLeader2" runat="server" AppendDataBoundItems="True" Width="292px" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceLeader" DataTextField="name_lastname" DataValueField="id">
-            </asp:DropDownList>
-            </td>
-        </tr>
-         <tr>
-             <td class="auto-style1">
-                     <asp:Label ID="Label10" runat="server" Text="Status"></asp:Label>
-             </td>
-             <td>
-            <asp:DropDownList ID="ddlStatus2" runat="server" Width="293px" AppendDataBoundItems="True" EnableViewState="False" CssClass="btn btn-secondary dropdown-toggle">
-                <asp:ListItem>Undone</asp:ListItem>
-                <asp:ListItem>Finish</asp:ListItem>
-                <asp:ListItem>Cancel</asp:ListItem>
-                <asp:ListItem>Pause</asp:ListItem>
-            </asp:DropDownList>
-
-            </td>
-         </tr>
-         <tr>
-            <td class="auto-style1">
-                     <asp:Label ID="Label11" runat="server" Text="Description"></asp:Label>
-            </td>
-            <td >
-            <asp:TextBox ID="tbDescription2" runat="server" Height="224px" Width="291px" TextMode="MultiLine" AutoCompleteType="Disabled" MaxLength="200"></asp:TextBox>
-
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td >
-                <asp:Button ID="btnSubmit2" runat="server" OnClick="btnSubmit2_Click" Text="Submit" Width="296px" CssClass="center"/>
-            </td>
-        </tr>
-        <tr>
-            <td > </td>
-            <td>
-                <asp:Label ID="lInfoTask" runat="server" Text="Sucessful add task to project" Visible="False"></asp:Label>
-            </td>
-            </tr>
-    </table> 
-        </asp:panel>
-
-
-
+        <div class="form-check form-check-inline">
+            <asp:RadioButtonList ID="rblChoose" runat="server" AutoPostBack="True" RepeatDirection="Horizontal" TextAlign="Left" Width="274px" OnSelectedIndexChanged="rblChoose_SelectedIndexChanged" CssClass="auto-style2">
+                <asp:ListItem Selected="True">Project</asp:ListItem>
+                <asp:ListItem>Task</asp:ListItem>
+            </asp:RadioButtonList>
+        </div>
     </div>
 
 
-        
-  </div>
+    <div class="container ">
+
+        <div class="card text-center-sm shadow bg- mb-4 " style="max-width: 22rem">
+            <div class="card-header">
+                <asp:Label ID="labelTaskOrProject" runat="server" Text="Add to project"></asp:Label>
+            </div>
+
+
+                <div class="card-body">
+            <asp:Panel ID="pnlAddtoProject" runat="server">
+
+
+                    <div class="row justify-content-center">
+
+                        <asp:Label ID="Label5" runat="server" Text="Project"></asp:Label>
+                    </div>
+                    <div class="row justify-content-center ">
+
+                        <asp:DropDownList ID="ddlProject" runat="server" Width="296px" style="margin-top: 3px" AppendDataBoundItems="True" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceProject" DataTextField="name" DataValueField="id">
+                        </asp:DropDownList>
+                        <asp:LinqDataSource ID="LinqDataSourceProject" runat="server" ContextTypeName="LinqDataClassesDataContext" EntityTypeName="" Select="new (id, name)" TableName="projects">
+                        </asp:LinqDataSource>
+
+                    </div>
+
+                    <div class="row justify-content-center">
+
+                        <asp:Label ID="Label1" style="margin-top: 14px" runat="server" Text="Name"></asp:Label>
+                    </div>
+                    <div class="row justify-content-center">
+
+                        <asp:TextBox ID="tbName" runat="server" style="margin-top: 3px"  Width="286px" AutoCompleteType="Disabled" MaxLength="50"></asp:TextBox>
+                    </div>
+                    <div class="row justify-content-center">
+
+                        <asp:Label ID="Label2"  style="margin-top: 14px"  runat="server" Text="Leader"></asp:Label>
+                    </div>
+                    <div class="row justify-content-center">
+
+                        <asp:DropDownList ID="ddlLeader" style="margin-top: 3px" runat="server" AppendDataBoundItems="True" Width="293px" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceLeader" DataTextField="name_lastname" DataValueField="id">
+                        </asp:DropDownList>
+                        <asp:LinqDataSource ID="LinqDataSourceLeader" runat="server" ContextTypeName="LinqDataClassesDataContext" EntityTypeName="" Select="new (id, name, name_lastname)" TableName="users">
+                        </asp:LinqDataSource>
+                    </div>
+
+                    <div class="row justify-content-center">
+
+                        <asp:Label ID="Label3"  style="margin-top: 14px"  runat="server" Text="Status"></asp:Label>
+                    </div>
+                    <div class="row justify-content-center">
+
+                        <asp:DropDownList ID="ddlStatus" runat="server" Width="293px" style="margin-top: 3px" AppendDataBoundItems="True" EnableViewState="False" CssClass="btn btn-secondary dropdown-toggle">
+                            <asp:ListItem>Undone</asp:ListItem>
+                            <asp:ListItem>Finish</asp:ListItem>
+                            <asp:ListItem>Cancel</asp:ListItem>
+                            <asp:ListItem>Pause</asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="row justify-content-center">
+
+                        <asp:Label ID="Label4"  style="margin-top: 14px"  runat="server" Text="Description"></asp:Label>
+                    </div>
+                    <div class="row justify-content-center">
+
+                        <asp:TextBox ID="tbDescription" runat="server" Height="224px" style="margin-top: 3px" Width="291px" TextMode="MultiLine" AutoCompleteType="Disabled" MaxLength="4000"></asp:TextBox>
+                    </div>
+                    <div class="row justify-content-center">
+
+                        <asp:Button ID="bSubmit" runat="server" OnClick="bSubmit_Click" style="margin-top: 3px" Text="Submit" Width="296px" CssClass="center" />
+                    </div>
+                    <div class="row justify-content-center">
+
+                        <asp:Label ID="lInfoProject" runat="server" Text="successfully added task to project" Visible="False"></asp:Label>
+                    </div>
+            </asp:Panel>
+
+
+            <asp:Panel ID="pnlAddtoTask" runat="server">
+                <div class="row justify-content-center">
+
+                    <asp:Label ID="Label7" style="margin-top: 0px" runat="server" Text="Project"></asp:Label>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:DropDownList ID="ddlProject2" style="margin-top: 3px" runat="server" Width="290px" AppendDataBoundItems="True" CssClass="btn btn-secondary dropdown-toggle" AutoPostBack="True" DataSourceID="LinqDataSourceProject" DataTextField="name" DataValueField="id">
+                    </asp:DropDownList>
+                </div>
+                <div class="row justify-content-center">
+                   
+                    <asp:Label ID="Label13" style="margin-top: 14px" runat="server" Text="Task"></asp:Label>
+                   
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:DropDownList ID="ddlTask"  runat="server" Width="289px" CssClass="btn btn-secondary dropdown-toggle" Style="margin-top: 3px" OnSelectedIndexChanged="ddlTask_SelectedIndexChanged" DataSourceID="LinqDataSourceTask" DataTextField="name_task" DataValueField="id">
+                    </asp:DropDownList>
+                    <asp:LinqDataSource ID="LinqDataSourceTask" runat="server" ContextTypeName="LinqDataClassesDataContext" EntityTypeName="" Select="new (id, name, projectID, name_task)" TableName="tasks" Where="projectID == @projectID">
+                        <WhereParameters>
+                            <asp:ControlParameter ControlID="ddlProject2" Name="projectID" PropertyName="SelectedValue" Type="Int32" />
+                        </WhereParameters>
+                    </asp:LinqDataSource>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:Label ID="Label8" style="margin-top: 14px" runat="server" Text="Name"></asp:Label>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:TextBox ID="tbName2" style="margin-top: 3px" runat="server" Width="286px" AutoCompleteType="Disabled" MaxLength="50"></asp:TextBox>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:Label ID="Label9" style="margin-top: 14px" runat="server" Text="Leader"></asp:Label>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:DropDownList ID="ddlLeader2" style="margin-top: 3px" runat="server" AppendDataBoundItems="True" Width="292px" CssClass="btn btn-secondary dropdown-toggle" DataSourceID="LinqDataSourceLeader" DataTextField="name_lastname" DataValueField="id">
+                    </asp:DropDownList>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:Label ID="Label10" style="margin-top: 14px" runat="server" Text="Status"></asp:Label>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:DropDownList ID="ddlStatus2" style="margin-top: 3px" runat="server" Width="293px" AppendDataBoundItems="True" EnableViewState="False" CssClass="btn btn-secondary dropdown-toggle">
+                        <asp:ListItem>Undone</asp:ListItem>
+                        <asp:ListItem>Finish</asp:ListItem>
+                        <asp:ListItem>Cancel</asp:ListItem>
+                        <asp:ListItem>Pause</asp:ListItem>
+                    </asp:DropDownList>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:Label ID="Label11" style="margin-top: 14px" runat="server" Text="Description"></asp:Label>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:TextBox ID="tbDescription2" style="margin-top: 3px" runat="server" Height="224px" Width="291px" TextMode="MultiLine" AutoCompleteType="Disabled" MaxLength="200"></asp:TextBox>
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:Button ID="btnSubmit2" style="margin-top: 3px" runat="server" OnClick="btnSubmit2_Click" Text="Submit" Width="296px" CssClass="center" />
+                </div>
+                <div class="row justify-content-center">
+
+                    <asp:Label ID="lInfoTask" style="margin-top: 3px" runat="server"  Text="Successfully added task to project" Visible="False"></asp:Label>
+                </div>
+            </asp:Panel>
+        </div>
+            </div>
+    </div>
+    
 
 
 </asp:Content>
 
-<asp:Content ID="Content1" runat="server" contentplaceholderid="head">
+<asp:Content ID="Content1" runat="server" ContentPlaceHolderID="head">
     <style type="text/css">
         .auto-style1 {
             width: 101px;
         }
+
         .auto-style2 {
             margin-left: 0px;
         }
-        </style>
+    </style>
 </asp:Content>
 
 

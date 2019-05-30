@@ -9,6 +9,7 @@ public partial class _Default : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        /*
         if (Session["UserLogIn"] != null)
         {
    
@@ -17,5 +18,16 @@ public partial class _Default : System.Web.UI.Page
         {
             Response.Redirect("Login.aspx");
         }
+        */
+    }
+
+    protected void btnSignIn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Login.aspx");
+    }
+
+    protected void btnRegister_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("Registration.aspx");
     }
 }
