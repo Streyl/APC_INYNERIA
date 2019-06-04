@@ -97,4 +97,9 @@ public partial class MasterPage : System.Web.UI.MasterPage
     {
         Response.Redirect("Contact.aspx");
     }
+
+    protected void bUpperMenuUserConfiguration_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("UserConfiguration.aspx");
+    }
 }
