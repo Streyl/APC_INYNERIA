@@ -35,18 +35,32 @@ width: 225px;
 
 </style>
 
-<div class="row">
-  <div class="column1">
+    <div class="card text-center-md shadow mb-2 bg-white "style=" min-width:250px">
+
+        <div class="card-header">
+            My Project
+        </div>
+        <div class="card-body">
+
+
+<div class="row justify-content-center">
+  <div class="col">
      <asp:treeview id="TreeViewProjects" runat="server" ExpandDepth="0" OnSelectedNodeChanged="TreeViewProjects_SelectedNodeChanged" Target="_self">
          <SelectedNodeStyle Font-Bold="True" />
       </asp:treeview>
   </div>
-  <div class="column">
-      <table class="betterTable">
-          <caption>Project:</caption>
+  <div class="col">
+      <div  class="table-responsive">
+      <table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">Project:</th>
+
+    </tr>
+  </thead>
 			<tbody>
 			<tr>
-				<td >Name:&nbsp;</td>
+				<td >Name:</td>
 				<td>
                     <asp:Label ID="lbProjectID" runat="server" Text="" Visible="False"></asp:Label>
                     <asp:TextBox ID="tbProjectName" class="alnC" runat="server" ReadOnly="True"></asp:TextBox>
@@ -103,6 +117,7 @@ width: 225px;
             </tr>
 			<tbody>
 		</table>
+          
 
       <table>
           <tr>
@@ -119,23 +134,29 @@ width: 225px;
 
       </table>
           
-      
+      </div>
   </div>
+    
 
+    <div class="col">
+        <div class="table-responsive">
+              <table class="table">
+            <thead>
+    <tr>
+      <th scope="col">Task:</th>
 
-    <div class="column">
-              <table class="betterTable">
-          <caption>Task:</caption>
+    </tr>
+  </thead>
 			<tbody>
-			<tr>
+			<tr style="margin-top:3px">
 				<td>Name:&nbsp;</td>
 				<td>
                     <asp:Label ID="lbTaskID" runat="server" Text="" Visible="False"></asp:Label>
                     <asp:TextBox ID="tbTaskName" class="alnC" runat="server" ReadOnly="True"></asp:TextBox>
                     &nbsp;</td>
 			</tr>
-			<tr>
-				<td>Leader name:&nbsp;</td>
+			<tr style="margin-top:3px">
+				<td >Leader name:&nbsp;</td>
 				<td>
                     <asp:DropDownList ID="ddTaskLeader" class="alnC" runat="server"  DataTextField="name_lastname" DataValueField="id"></asp:DropDownList>
                   
@@ -155,11 +176,11 @@ width: 225px;
 			</tr>
 			<tbody>
 		</table>
-
+        
          <table>
           <tr>
             <td>
-                 <asp:Button ID="btTaskSave" runat="server" Text="Save" OnClick="btTaskSave_Click" />
+                 <asp:Button ID="btTaskSave" runat="server" style="margin-top: -100px" Text="Save" OnClick="btTaskSave_Click" />
              &nbsp;</td> 
           </tr>
 
@@ -170,12 +191,14 @@ width: 225px;
           </tr>
 
       </table>
-
+        
 
 
                
     </div>
+        </div>
 </div>  
+            </div>
 </asp:Content>
 
 
