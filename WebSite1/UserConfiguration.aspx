@@ -42,7 +42,7 @@
                         <asp:Label ID="lbErrorMessageUP" runat="server" Text="Error" ForeColor="Red" Visible="False"></asp:Label>
                     </div>
                     <div class="row justify-content-center ">
-                        <asp:Button ID="bSubmitNameSirname" runat="server" Text="Submit" OnClick="bSubmitNameSirname_Click" style="margin-top: 3px" />
+                        <asp:Button ID="bSubmitNameSirname" runat="server" Text="Submit" OnClick="bSubmitNameSirname_Click" style="margin-top: 3px" CssClass="btn btn-success"/>
                     </div>
                 
 
@@ -88,7 +88,7 @@
                         <asp:Label ID="lbErrorMessageDown" runat="server" Text="Error" ForeColor="Red" Visible="False" style="margin-top: 3px" ></asp:Label>
                     </div>
                     <div class="row justify-content-center ">
-                        <asp:Button ID="bSubmitChange" runat="server" Text="Submit" OnClick="bSubmitChange_Click" style="margin-top: 3px" />
+                        <asp:Button ID="bSubmitChange" runat="server" Text="Submit" OnClick="bSubmitChange_Click" style="margin-top: 3px" CssClass="btn btn-success"/>
                     </div>
                 </asp:Panel>
                 </div>

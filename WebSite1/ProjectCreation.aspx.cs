@@ -18,6 +18,7 @@ public partial class ProjectCreation : System.Web.UI.Page
         if (txtName.Text == "" || txtStatus.Text == "" || txtDescription.Text == "" || txtStartDate.Text=="" || txtEndDate.Text=="")
         {
             Validation();
+            lblProjectCreationSucces.Visible = false;
         }
         else
         {
@@ -50,6 +51,7 @@ public partial class ProjectCreation : System.Web.UI.Page
 
             db.projects.InsertOnSubmit(Project);
             db.SubmitChanges();
+            lblProjectCreationSucces.Visible = true;
         }
     }
 

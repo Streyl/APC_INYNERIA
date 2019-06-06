@@ -6,11 +6,7 @@
 
 
         <asp:Panel ID="Panel1" runat="server">
-            <div class="card col-4" style="max-width: 17rem; max-height: 15rem; height:10rem">
-
-                <div class="card-header">
-                    Search
-                </div>
+            <div class="card col-4" style="max-width: 17rem; max-height: 5rem; height:10rem">
                   <div class="card-body">
                     <div class="row justify-content-center">
             <div class=" row form-check form-check-inline">
@@ -32,16 +28,16 @@
 
                 <div class="card-body">
                     <div class="row justify-content-center">
-                             <asp:DropDownList ID="ddlSearchProject" runat="server" Width="219px">
+                             <asp:DropDownList ID="ddlSearchProject" runat="server" Width="250px" style="margin-top:0px">
                                  <asp:ListItem>Name</asp:ListItem>
                                  <asp:ListItem>Status</asp:ListItem>
                                  <asp:ListItem>CreatorID</asp:ListItem>
                              </asp:DropDownList>
                          </div>
                     <div class="row justify-content-center">
-                        <asp:TextBox ID="tbSearchProject" runat="server" AutoCompleteType="Disabled" OnTextChanged="tbSearchProject_TextChanged"></asp:TextBox>
+                        <asp:TextBox ID="tbSearchProject" runat="server" AutoCompleteType="Disabled" OnTextChanged="tbSearchProject_TextChanged" style="margin-top:0px" Width="250px"></asp:TextBox>
                   
-                        <asp:Button ID="btnSearchProject" runat="server" Text="Search" OnClick="btnSearchProject_Click" />
+                        <asp:Button ID="btnSearchProject" runat="server" Text="Search" OnClick="btnSearchProject_Click" style="margin-top:0px"/>
                     </div>
                 </div>
             </div>
@@ -175,25 +171,25 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="row justify-content-center">
-                        <asp:DropDownList ID="ddlChooseProject" runat="server" Width="200px" CssClass="auto-style1" Enabled="False" style="margin-top:4px; margin-bottom:0px">
-                        </asp:DropDownList>
-                    </div >
                      <div class="row justify-content-center">
-                        <asp:CheckBox ID="cbChooseProject" runat="server" AutoPostBack="True" OnCheckedChanged="cbChooseProject_CheckedChanged" Text=" " style="margin-top:0px"/>
+                       
+                        <asp:CheckBox ID="cbChooseProject" runat="server" AutoPostBack="True" OnCheckedChanged="cbChooseProject_CheckedChanged" Text="Choose Project " style="margin-top:-40px"/>
                     </div>
                     <div class="row justify-content-center">
-                        <asp:Label ID="Label1" runat="server" Text="Choose Project" style="margin-top:4px"></asp:Label>
-                        </div>
+                        <asp:DropDownList ID="ddlChooseProject" runat="server" Width="250px" CssClass="auto-style1" Enabled="False" style="margin-top:4px">
+                        </asp:DropDownList>
+                    </div >
+
+                        
                    <div class="row justify-content-center">
-                                        <asp:DropDownList ID="ddlSearchTask" runat="server" Width="229px" style="margin-top:4px">
+                                        <asp:DropDownList ID="ddlSearchTask" runat="server" Width="250px" style="margin-top:1px">
                                             <asp:ListItem>Name</asp:ListItem>
                                             <asp:ListItem>Status</asp:ListItem>
                                             <asp:ListItem>LeaderID</asp:ListItem>
                                         </asp:DropDownList>
                                        </div>
                           <div class="row justify-content-center">
-                        <asp:TextBox ID="tbSearchTask" runat="server" AutoCompleteType="Disabled" style="margin-top:4px"></asp:TextBox>
+                        <asp:TextBox ID="tbSearchTask" runat="server" AutoCompleteType="Disabled" style="margin-top:4px" Width="250px"></asp:TextBox>
                   </div>
                           <div class="row justify-content-center">
                         <asp:Button ID="btnSearchTask" runat="server" Text="Search" OnClick="btnSearchTask_Click" style="margin-top:4px"/>
