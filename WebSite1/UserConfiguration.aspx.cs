@@ -15,7 +15,7 @@ public partial class UserConfiguration : System.Web.UI.Page
         if (!IsPostBack)
         {
             tbChangeName.Text = (Session["User"] as user).name;
-            tbChangeSirname.Text = (Session["User"] as user).surname;
+            tbChangeSurname.Text = (Session["User"] as user).surname;
             lbErrorMessageUP.Visible = false;
             lbErrorMessageDown.Visible = false;
 
@@ -24,7 +24,12 @@ public partial class UserConfiguration : System.Web.UI.Page
 
     protected void bSubmitChange_Click(object sender, EventArgs e)
     {
-        if (tbOldPassword.Text != (Session["User"] as user).password)
+        string savedPasswordHash = BaseDB.users.Where(x => x.login == (Session["User"] as user).login).Select(x => x.password).Single();
+        byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);
+        PasswordHash hash = new PasswordHash(hashBytes);
+
+
+        if (hash.Verify(tbOldPassword.Text) != true)
         {
             lbErrorMessageDown.Visible = true;
             lbErrorMessageDown.ForeColor = System.Drawing.Color.Red;
@@ -49,15 +54,22 @@ public partial class UserConfiguration : System.Web.UI.Page
                         lbErrorMessageDown.Visible = true;
                         lbErrorMessageDown.ForeColor = System.Drawing.Color.Red;
 
-                        lbErrorMessageDown.Text = "New password doesn't match conformation";
+                        lbErrorMessageDown.Text = "New passwords don't match";
                     }
                     else
                     {
+                        PasswordHash hash_new = new PasswordHash(tbNewPassword.Text);
+                        byte[] hashBytes_new = hash_new.ToArray();
+                        string password_new = Convert.ToBase64String(hashBytes_new);
+
                         user uu = BaseDB.users.Single(u => u.id == (Session["User"] as user).id);
-                        uu.password = tbConfirmPassword.Text;
+                        uu.password = password_new;
+
                         lbErrorMessageDown.Visible = true;
                         lbErrorMessageDown.ForeColor = System.Drawing.Color.Green;
                         lbErrorMessageDown.Text = "Done";
+
+
                         BaseDB.SubmitChanges();
                         Session["User"] = uu;
                     }
@@ -79,33 +91,33 @@ public partial class UserConfiguration : System.Web.UI.Page
         if (tbChangeName.Text == "" || tbChangeName.Text.Length > 50)
         {
             tbChangeName.Text = (Session["User"] as user).name;
-            tbChangeSirname.Text = (Session["User"] as user).surname;
+            tbChangeSurname.Text = (Session["User"] as user).surname;
             lbErrorMessageUP.Visible = true;
             lbErrorMessageUP.ForeColor = System.Drawing.Color.Red;
-            lbErrorMessageUP.Text = "Problem with you'r Name, please Change it and try again. MAX 50 charachters";
+            lbErrorMessageUP.Text = "Problem with your name, please change it and try again. MAX 50 charachters";
         }
-        else if (tbChangeSirname.Text == "" || tbChangeSirname.Text.Length > 50)
+        else if (tbChangeSurname.Text == "" || tbChangeSurname.Text.Length > 50)
         {
             tbChangeName.Text = (Session["User"] as user).name;
-            tbChangeSirname.Text = (Session["User"] as user).surname;
+            tbChangeSurname.Text = (Session["User"] as user).surname;
             lbErrorMessageUP.Visible = true;
             lbErrorMessageUP.ForeColor = System.Drawing.Color.Red;
-            lbErrorMessageUP.Text = "Problem with you'r Sirname, please Change it and try again. MAX 50 charachters";
+            lbErrorMessageUP.Text = "Problem with your surname, please change it and try again. MAX 50 charachters";
         }
-        else if (tbChangeName.Text == "" && tbChangeSirname.Text == "")
+        else if (tbChangeName.Text == "" && tbChangeSurname.Text == "")
         {
             tbChangeName.Text = (Session["User"] as user).name;
-            tbChangeSirname.Text = (Session["User"] as user).surname;
+            tbChangeSurname.Text = (Session["User"] as user).surname;
             lbErrorMessageUP.Visible = true;
             lbErrorMessageUP.ForeColor = System.Drawing.Color.Red;
-            lbErrorMessageUP.Text = "Problem with you'r Name or Sirname, please Change it and try again.";
+            lbErrorMessageUP.Text = "Problem with your name or surname, please change it and try again.";
         }
         else
         {
             user uu = BaseDB.users.Single(u => u.id == (Session["User"] as user).id);
 
             uu.name = tbChangeName.Text;
-            uu.surname = tbChangeSirname.Text;
+            uu.surname = tbChangeSurname.Text;
             lbErrorMessageUP.Visible = true;
             lbErrorMessageUP.ForeColor = System.Drawing.Color.Green;
             lbErrorMessageUP.Text = "Done";

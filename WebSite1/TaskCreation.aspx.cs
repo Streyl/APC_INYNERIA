@@ -10,55 +10,56 @@ public partial class TaskCreation : System.Web.UI.Page
     LinqDataClassesDataContext dbb = new LinqDataClassesDataContext();
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(!IsPostBack)
+        if (!IsPostBack)
         {
-            
+
 
             if (rblChoose.SelectedItem.Text == "Project")
             {
                 lInfoProject.Visible = false;
                 pnlAddtoProject.Visible = true;
                 pnlAddtoTask.Visible = false;
-              
+
             }
             else
             {
                 pnlAddtoTask.Visible = true;
-                pnlAddtoProject .Visible= false;
+                pnlAddtoProject.Visible = false;
                 lInfoTask.Visible = false;
-                
+
             }
 
 
 
         }
-        
-        
+
+
     }
-    
+
     protected void bSubmit_Click(object sender, EventArgs e)
-    { if (tbName.Text == "" || tbDescription.Text == "" )
+    {
+        if (tbName.Text == "" || tbDescription.Text == "")
         {
             Validation();
         }
         else
         {
             lInfoProject.Visible = true;
-            lInfoProject.Text = "Sucessful add task to project";
+            lInfoProject.Text = "Sucessfuly added task to project";
 
             task t = new task
             {
                 name = tbName.Text,
-                leaderID=Convert.ToInt32(ddlLeader.SelectedValue),
-                status=ddlStatus.Text,
-                description=tbDescription.Text,
-                projectID =  Convert.ToInt32( ddlProject.SelectedValue)
-                
+                leaderID = Convert.ToInt32(ddlLeader.SelectedValue),
+                status = ddlStatus.Text,
+                description = tbDescription.Text,
+                projectID = Convert.ToInt32(ddlProject.SelectedValue)
+
             };
 
             dbb.tasks.InsertOnSubmit(t);
             dbb.SubmitChanges();
-           
+
         }
 
     }
@@ -102,7 +103,7 @@ public partial class TaskCreation : System.Web.UI.Page
             }
 
 
-            if (tbDescription2.Text == "" )
+            if (tbDescription2.Text == "")
             {
                 tbDescription2.Style.Add("background-color", "red");
             }
@@ -115,7 +116,7 @@ public partial class TaskCreation : System.Web.UI.Page
 
     protected void btnSubmit2_Click(object sender, EventArgs e)
     {
-        if (tbName2.Text == "" || tbDescription2.Text == "" )
+        if (tbName2.Text == "" || tbDescription2.Text == "")
         {
             Validation();
         }
@@ -123,25 +124,26 @@ public partial class TaskCreation : System.Web.UI.Page
         {
 
             lInfoTask.Visible = true;
-            lInfoTask.Text = "Sucessful add task to project";
+            lInfoTask.Text = "Sucessfuly added task to project";
 
             task t = new task
             {
                 name = tbName2.Text,
                 leaderID = Convert.ToInt32(ddlLeader2.SelectedValue),
+                parentID = Convert.ToInt32(ddlTask.SelectedValue),
                 status = ddlStatus2.Text,
                 description = tbDescription2.Text,
                 projectID = Convert.ToInt32(ddlProject2.SelectedValue)
 
             };
-            taskAssignment taskToTask = new taskAssignment
-            {
-                userID = Convert.ToInt32(ddlLeader2.SelectedValue),
-                taskID = Convert.ToInt32(ddlTask.SelectedValue)
-            };
+            //taskAssignment taskToTask = new taskAssignment
+            //{
+            //    userID = Convert.ToInt32(ddlLeader2.SelectedValue),
+            //    taskID = Convert.ToInt32(ddlTask.SelectedValue)
+            //};
 
             dbb.tasks.InsertOnSubmit(t);
-            dbb.taskAssignments.InsertOnSubmit(taskToTask);
+            //dbb.taskAssignments.InsertOnSubmit(taskToTask);
             dbb.SubmitChanges();
         }
 
@@ -161,15 +163,11 @@ public partial class TaskCreation : System.Web.UI.Page
         }
     }
 
-
-
-
-
     protected void ddlTask_SelectedIndexChanged(object sender, EventArgs e)
     {
-       // ddlTask(m=> m.)
+        // ddlTask(m=> m.)
     }
 }
-//stowrzyc czyszczenie validacji po wcisnieciu submit
+//stworzyc czyszczenie validacji po wcisnieciu submit
 
-   
+

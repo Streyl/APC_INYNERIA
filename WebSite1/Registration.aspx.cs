@@ -44,7 +44,7 @@ public partial class Registration : System.Web.UI.Page
         }
         else if(tbPassword.Text.Length<6 || tbPassword.Text.Length >32)
         {
-            lbErrorMessage.Text = "Your Password too short or too long";
+            lbErrorMessage.Text = "Your Password is too short or too long";
             Clear(1);
         }
         else if (tbPassword.Text != tbConfirmPassword.Text)
@@ -59,14 +59,17 @@ public partial class Registration : System.Web.UI.Page
         }
         else
         {
-            
+            PasswordHash hash = new PasswordHash(tbPassword.Text);
+            byte[] hashBytes = hash.ToArray();
+
+            string password = Convert.ToBase64String(hashBytes);
 
             user User = new user
             {
                 name = tbName.Text,
                 surname = tbSurname.Text,
                 login = tbLogin.Text,
-                password = tbPassword.Text,
+                password = password,
                 accountStatus = 1,
                 level = 1
             };

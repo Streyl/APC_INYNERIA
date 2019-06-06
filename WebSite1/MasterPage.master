@@ -13,11 +13,13 @@
     <asp:ContentPlaceHolder id="head" runat="server">
     </asp:ContentPlaceHolder>
     <!-- dodac link do plikow skryptowych-->
+    <script src="Scripts/jquery-3.0.0.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/jquery.contextMenu.js"></script>
 
 </head>
 <body>
-    <script src="Scripts/jquery-3.0.0.min.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
+
 
     <form id="form1" runat="server">
     
