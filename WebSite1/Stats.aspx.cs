@@ -16,9 +16,11 @@ public partial class Stats : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        var Data = (from ob in BaseDB.projects
-                    select ob);
+        var Data = (from ob1 in BaseDB.projects
+                    select ob1);
         GridViewData.DataSource = Data;
+        ChartProject.DataSource = Data;
+        ChartProject.DataBind();
         GridViewData.DataBind();
 
         var Data1 = (from ob in BaseDB.tasks
@@ -84,5 +86,10 @@ public partial class Stats : System.Web.UI.Page
 
         Response.Write(pdfDoc1);
         Response.End();
+    }
+
+    protected void LinqDataSource1_Selecting(object sender, LinqDataSourceSelectEventArgs e)
+    {
+
     }
 }
