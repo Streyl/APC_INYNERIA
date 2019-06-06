@@ -21,12 +21,14 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
         else
         {
-           bUpperMenuLogout.Text = "Log In";
+                
+            bUpperMenuLogout.Text = "Log In";
             MainContent.Visible = false;
             NotLogInContent.Visible = true;
             pnlLeftMenu.Visible = false;
             bUpperMenuAdminManageUsers.Visible = false;
             bUpperMenuUserConfiguration.Visible = false;
+           
         }
         int ra = 1;
          ra = Convert.ToInt32(Session["Level"]);
@@ -38,9 +40,11 @@ public partial class MasterPage : System.Web.UI.MasterPage
         }
         else
         {
+
             bUpperMenuAdminManageUsers.Visible = false;
             bUpperMenuAdminProjectManage.Visible = false;
         }
+
       
     }
 

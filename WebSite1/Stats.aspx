@@ -78,6 +78,6 @@
  	</asp:Content>
 	<asp:Content ID="Content1" ContentPlaceHolderID="NotLogInContent" runat="server">
 
-				U have to Log IN
+				<
 
  	</asp:Content>

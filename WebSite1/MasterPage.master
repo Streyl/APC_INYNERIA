@@ -94,6 +94,7 @@
         
                             </asp:ContentPlaceHolder>
                             <asp:ContentPlaceHolder id="NotLogInContent" runat="server" >
+                                    
         
                             </asp:ContentPlaceHolder>
                              </center>
