@@ -17,6 +17,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             NotLogInContent.Visible = false;
             bUpperMenuRegistration.Visible = false;
             pnlLeftMenu.Visible = true;
+            bUpperMenuUserConfiguration.Visible = true;
         }
         else
         {
@@ -25,6 +26,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
             NotLogInContent.Visible = true;
             pnlLeftMenu.Visible = false;
             bUpperMenuAdminManageUsers.Visible = false;
+            bUpperMenuUserConfiguration.Visible = false;
         }
         int ra = 1;
          ra = Convert.ToInt32(Session["Level"]);

@@ -13,7 +13,22 @@ public partial class Login : System.Web.UI.Page
 
     bool IsUserExist(string userLogin, string userPassword, out user logged)//if user is already log in is true
     {
-        if (tbLogin.Text != "" && tbPassword.Text != "")
+        bool isLoginExist = false;
+        var q = from p in BaseDB.users
+                where p.login == tbLogin.Text
+                && p.accountStatus == 1 // account is active? Check whats mean number in account status
+                select p;
+        if (q.Count() == 1)
+        {
+            isLoginExist = true;
+        }
+        else
+        {
+            isLoginExist = false;
+        }
+
+
+        if (tbLogin.Text != "" && tbPassword.Text != "" && isLoginExist==true)
         {
             string savedPasswordHash = BaseDB.users.Where(x => x.login == tbLogin.Text).Select(x => x.password).Single();
             byte[] hashBytes = Convert.FromBase64String(savedPasswordHash);

@@ -24,7 +24,7 @@
 
         
    
-            <nav class="navbar navbar-expand-md navbar-dark bg-dark " >
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark " style="height:70px">
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,7 +40,7 @@
                                 <asp:Button ID="bUpperMenuDefault" runat="server" Text="Default" UseSubmitBehavior="False" href="Default.aspx" CssClass="btn btn-outline-info" OnClick="bDefault_Click1"/>
                                 <asp:Button ID="bUpperMenuContact" runat="server" Text="Contact" UseSubmitBehavior="False" href="Contact.aspx" CssClass="btn btn-outline-info" OnClick="bContact_Click"/>
          
-                                z
+                                
                             <li class="nav-item">
                             <asp:Button ID="bUpperMenuAdminProjectManage" runat="server" Text="Manage Project"  class="btn btn-primary" BorderColor="Lavender"  Visible="False" UseSubmitBehavior="False" OnClick="bAdminManageProject_Click"/>
                             <asp:Button ID="bUpperMenuAdminManageUsers" runat="server" Text="Manage Users"  class="btn btn-primary" BorderColor="Lavender" OnClick="bAdminManageUsers_Click" Visible="False" UseSubmitBehavior="False"/>
