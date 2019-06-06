@@ -13,12 +13,13 @@ public partial class UserConfiguration : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
-        {
-            tbChangeName.Text = (Session["User"] as user).name;
-            tbChangeSirname.Text = (Session["User"] as user).surname;
-            lbErrorMessageUP.Visible = false;
-            lbErrorMessageDown.Visible = false;
-
+        {   if (Session["UserLogIn"] != null)
+            {
+                tbChangeName.Text = (Session["User"] as user).name;
+                tbChangeSirname.Text = (Session["User"] as user).surname;
+                lbErrorMessageUP.Visible = false;
+                lbErrorMessageDown.Visible = false;
+            }                           
         }
     }
 

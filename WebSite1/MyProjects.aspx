@@ -108,18 +108,16 @@ width: 225px;
 				<td>Remarks:&nbsp;</td>
 				<td>
                     <asp:TextBox ID="tbProjectRemarks" class="alnC" runat="server" ReadOnly="False" Enabled="True" Wrap="True" TextMode="MultiLine" style = "resize:none"></asp:TextBox>
-                    &nbsp;</td>
+                    </td>
 			</tr>
-            <tr>
-                <td>
-                    
-                </td>     
-            </tr>
+
 			<tbody>
 		</table>
           
 
-      <table>
+      </div>
+            <div  class="table-responsive">
+      <table class="table table-sm">
           <tr>
             <td>
                 <asp:Button ID="btProjectSave" runat="server" Text="Save" OnClick="btProjectSave_Click" />   
@@ -133,8 +131,8 @@ width: 225px;
           </tr>
 
       </table>
+                </div>
           
-      </div>
   </div>
     
 
@@ -181,7 +179,7 @@ width: 225px;
           <tr>
             <td>
                  <asp:Button ID="btTaskSave" runat="server" style="margin-top: -100px" Text="Save" OnClick="btTaskSave_Click" />
-             &nbsp;</td> 
+             </td> 
           </tr>
 
           <tr>
