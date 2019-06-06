@@ -65,7 +65,7 @@
         </div>
         <div class="row justify-content-center">
             
-                <asp:Button ID="btnCreateProject" runat="server" OnClick="btnCreateProject_Click" Text="Create Project" Width="303px" />
+                <asp:Button ID="btnCreateProject" runat="server" OnClick="btnCreateProject_Click" Text="Create Project" Width="303px"  CssClass="btn btn-success" />
 
             </div>
                 <div class="row justify-content-center">
