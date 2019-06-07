@@ -21,7 +21,7 @@
       <Column Name="name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="surname" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="login" Type="System.String" DbType="VarChar(16) NOT NULL" CanBeNull="false" />
-      <Column Name="password" Type="System.String" DbType="VarChar(32) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="[level]" Member="level" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="accountStatus" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="user_project" Member="projects" ThisKey="id" OtherKey="creatorID" Type="project" />
@@ -50,6 +50,8 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="userID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="taskID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="hoursWorked" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="task_taskAssignment" Member="task" ThisKey="taskID" OtherKey="id" Type="task" IsForeignKey="true" />
       <Association Name="user_taskAssignment" Member="user" ThisKey="userID" OtherKey="id" Type="user" IsForeignKey="true" />
     </Type>

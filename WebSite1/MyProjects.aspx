@@ -10,7 +10,16 @@
 
 .column1 {
     float: left;
-    width: 20%;
+    width: auto;
+}
+
+.row1 {
+display:-ms-flexbox;
+display:flex;
+/*-ms-flex-wrap:wrap;*/
+/*flex-wrap:wrap; */
+margin-right:-15px;
+margin-left:-15px
 }
 
 .betterTable caption {
@@ -30,10 +39,11 @@ margin:0 auto;
 width: 225px;
 
 }
-
-
-
 </style>
+    <asp:Panel ID="pContent" runat="server">
+
+
+
 
     <div class="card text-center-md shadow mb-2 bg-white "style=" min-width:250px">
 
@@ -110,17 +120,16 @@ width: 225px;
                     <asp:TextBox ID="tbProjectRemarks" class="alnC" runat="server" ReadOnly="False" Enabled="True" Wrap="True" TextMode="MultiLine" style = "resize:none"></asp:TextBox>
                     </td>
 			</tr>
-
 			<tbody>
 		</table>
           
 
       </div>
-            <div  class="table-responsive">
-      <table class="table table-sm">
+
+      <table>
           <tr>
             <td>
-                <asp:Button ID="btProjectSave" runat="server" Text="Save" OnClick="btProjectSave_Click" />   
+                <asp:Button ID="btProjectSave" runat="server" Text="Save" OnClick="btProjectSave_Click" CssClass="btn btn-success"/>   
              &nbsp;</td> 
           </tr>
 
@@ -131,7 +140,6 @@ width: 225px;
           </tr>
 
       </table>
-                </div>
           
   </div>
     
@@ -172,14 +180,21 @@ width: 225px;
                     <asp:TextBox ID="tbTaskDescription" class="alnC" runat="server" ReadOnly="False" Enabled="True" Wrap="True" TextMode="MultiLine" style = "resize:none"></asp:TextBox>
                     &nbsp;</td>
 			</tr>
+                <tr>
+				<td>Users:&nbsp;</td>
+				<td>
+                    <asp:CheckBoxList ID="cblUsers" runat="server" BackColor="White" Width="225px"></asp:CheckBoxList>
+                    &nbsp;</td>
+			</tr>
+
 			<tbody>
 		</table>
         
          <table>
           <tr>
             <td>
-                 <asp:Button ID="btTaskSave" runat="server" style="margin-top: -100px" Text="Save" OnClick="btTaskSave_Click" />
-             </td> 
+                 <asp:Button ID="btTaskSave" runat="server" style="margin-top: -100px" Text="Save" OnClick="btTaskSave_Click" CssClass="btn btn-success" />
+             &nbsp;</td> 
           </tr>
 
           <tr>
@@ -197,6 +212,7 @@ width: 225px;
         </div>
 </div>  
             </div>
+</asp:Panel>
 </asp:Content>
 
 

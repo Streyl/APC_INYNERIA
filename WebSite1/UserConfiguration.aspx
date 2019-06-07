@@ -32,7 +32,7 @@
                         <asp:Label runat="server" Text="Change Sirname" style="margin-top: 3px" ></asp:Label>
                     </div>
                     <div class="col">
-                        <asp:TextBox ID="tbChangeSirname" runat="server" style="margin-top: 3px" ></asp:TextBox>
+                        <asp:TextBox ID="tbChangeSurname" runat="server" style="margin-top: 3px" ></asp:TextBox>
                     </div>
                 </div>
 

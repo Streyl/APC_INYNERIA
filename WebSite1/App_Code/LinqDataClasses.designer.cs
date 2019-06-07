@@ -563,7 +563,7 @@ public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(32) NOT NULL", CanBeNull=false)]
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
 	public string password
 	{
 		get
@@ -1116,6 +1116,10 @@ public partial class taskAssignment : INotifyPropertyChanging, INotifyPropertyCh
 	
 	private int _taskID;
 	
+	private int _hoursWorked;
+	
+	private bool _active;
+	
 	private EntityRef<task> _task;
 	
 	private EntityRef<user> _user;
@@ -1130,6 +1134,10 @@ public partial class taskAssignment : INotifyPropertyChanging, INotifyPropertyCh
     partial void OnuserIDChanged();
     partial void OntaskIDChanging(int value);
     partial void OntaskIDChanged();
+    partial void OnhoursWorkedChanging(int value);
+    partial void OnhoursWorkedChanged();
+    partial void OnactiveChanging(bool value);
+    partial void OnactiveChanged();
     #endregion
 	
 	public taskAssignment()
@@ -1203,6 +1211,46 @@ public partial class taskAssignment : INotifyPropertyChanging, INotifyPropertyCh
 				this._taskID = value;
 				this.SendPropertyChanged("taskID");
 				this.OntaskIDChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_hoursWorked", DbType="Int NOT NULL")]
+	public int hoursWorked
+	{
+		get
+		{
+			return this._hoursWorked;
+		}
+		set
+		{
+			if ((this._hoursWorked != value))
+			{
+				this.OnhoursWorkedChanging(value);
+				this.SendPropertyChanging();
+				this._hoursWorked = value;
+				this.SendPropertyChanged("hoursWorked");
+				this.OnhoursWorkedChanged();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_active", DbType="Bit NOT NULL")]
+	public bool active
+	{
+		get
+		{
+			return this._active;
+		}
+		set
+		{
+			if ((this._active != value))
+			{
+				this.OnactiveChanging(value);
+				this.SendPropertyChanging();
+				this._active = value;
+				this.SendPropertyChanged("active");
+				this.OnactiveChanged();
 			}
 		}
 	}
