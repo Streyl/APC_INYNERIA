@@ -55,21 +55,33 @@ public partial class MyProjects : System.Web.UI.Page
 
             if (!IsPostBack)
             {
-                foreach (project p in db.projects.Where(p => p.creatorID == userID))
+                TreeViewProjects.Nodes.Clear();
+                if(db.projects.Any(x => x.creatorID == userID))
                 {
-                    TreeNode projectNode = new TreeNode(p.name) { Value = p.id.ToString() };
-
-                    TreeViewProjects.Nodes.Add(projectNode);
-
-                    foreach (task t in db.tasks.Where(t => t.projectID == p.id && t.parentID == null))
+                    foreach (project p in db.projects.Where(p => p.creatorID == userID))
                     {
-                        TreeNode childNode = new TreeNode(t.name) { Value = t.id.ToString() };
+                        TreeNode projectNode = new TreeNode(p.name) { Value = p.id.ToString() };
 
-                        projectNode.ChildNodes.Add(childNode);
+                        TreeViewProjects.Nodes.Add(projectNode);
 
-                        FindSubtasks(childNode, t.id);
+                        foreach (task t in db.tasks.Where(t => t.projectID == p.id && t.parentID == null))
+                        {
+                            TreeNode childNode = new TreeNode(t.name) { Value = t.id.ToString() };
+
+                            projectNode.ChildNodes.Add(childNode);
+
+                            FindSubtasks(childNode, t.id);
+                        }
                     }
                 }
+                else
+                {
+                    pContent.Visible = false;
+                    
+                }
+
+
+
             }
         }
         else
@@ -125,6 +137,23 @@ public partial class MyProjects : System.Web.UI.Page
             tbTaskDescription.Text = tk.description;
 
             TextBoxAutosize(tbTaskDescription);
+
+            cblUsers.Items.Clear();
+
+            foreach (user u in db.users)
+            {
+                ListItem liUser = new ListItem(u.name_lastname, u.id.ToString());
+
+                if (db.taskAssignments.Any(x => x.userID == u.id && x.taskID == Convert.ToInt32(lbTaskID.Text) && x.active == true))
+                {
+                    liUser.Selected = true;
+                }
+                else
+                {
+                    liUser.Selected = false;
+                }
+                cblUsers.Items.Add(liUser);
+            }
         }
     }
 
@@ -134,43 +163,63 @@ public partial class MyProjects : System.Web.UI.Page
         {
             project p = db.projects.Single(x => x.id == Convert.ToInt32(lbProjectID.Text));
 
-            p.name = tbProjectName.Text;
-
-            p.creatorID = Convert.ToInt32(ddProjectCreator.SelectedValue);
-
             DateTime dDate;
+            DateTime dDate1;
+            DateTime dDate2;
+
+            bool validation = true;
 
             if (DateTime.TryParse(tbProjectCreationDate.Text, out dDate))
             {
                 String.Format("{0:d/MM/yyyy}", dDate);
             }
-            else { /*exception code*/ }
+            else { validation = false; }
 
-            p.creationDate = dDate;
-
-            if (DateTime.TryParse(tbProjectStartDate.Text, out dDate))
+            if (DateTime.TryParse(tbProjectStartDate.Text, out dDate1))
             {
-                String.Format("{0:d/MM/yyyy}", dDate);
+                String.Format("{0:d/MM/yyyy}", dDate1);
             }
-            else { /*exception code*/ }
+            else { validation = false; }
 
-            p.startDate = dDate;
-
-            if (DateTime.TryParse(tbProjectEndDate.Text, out dDate))
+            if (DateTime.TryParse(tbProjectEndDate.Text, out dDate2))
             {
-                String.Format("{0:d/MM/yyyy}", dDate);
+                String.Format("{0:d/MM/yyyy}", dDate2);
             }
-            else { /*exception code*/ }
+            else { validation = false; }
 
-            p.endDate = dDate;
 
-            p.status = tbProjectStatus.Text;
-            p.description = tbProjectDescription.Text;
-            p.remarks = tbProjectRemarks.Text;
+            if (dDate > dDate1) { validation = false; }
+            if (dDate1 > dDate2) { validation = false; }
+            if (dDate2 < dDate) { validation = false; }
 
-            lbProjectSaveSucces.Text = "Editing was succesful!";
+            if (tbProjectName.Text == null || tbProjectName.Text == "") { validation = false; }
+            if (tbProjectStatus.Text == null || tbProjectStatus.Text == "") { validation = false; }
+            //if (tbProjectDescription.Text == null) { validation = false; }
+            //if (tbProjectRemarks.Text == null) { validation = false; }
 
-            db.SubmitChanges();
+
+            if (validation==true)
+            {
+                p.name = tbProjectName.Text;
+                p.creatorID = Convert.ToInt32(ddProjectCreator.SelectedValue);
+                p.creationDate = dDate;
+                p.startDate = dDate;
+                p.endDate = dDate;
+                p.status = tbProjectStatus.Text;
+                p.description = tbProjectDescription.Text;
+                p.remarks = tbProjectRemarks.Text;
+
+
+                lbProjectSaveSucces.Text = "Editing was succesful!";
+
+                db.SubmitChanges();
+            }
+            else
+            {
+                lbProjectSaveSucces.Text = "Incorrect data!";
+                tbProjectStatus.Text = p.status;
+            }
+
         }
         else
         {
@@ -183,18 +232,66 @@ public partial class MyProjects : System.Web.UI.Page
         if (lbTaskID.Text != "")
         {
             task t = db.tasks.Single(x => x.id == Convert.ToInt32(lbTaskID.Text));
-            t.name = tbTaskName.Text;
-            t.leaderID = Convert.ToInt32(ddTaskLeader.SelectedValue);
-            t.status = tbTaskStatus.Text;
-            t.description = tbTaskDescription.Text;
 
-            lbTaskSaveSucces.Text = "Editing was succesful!";
+            bool validation = true;
 
-            db.SubmitChanges();
+            if (tbTaskName.Text == null || tbTaskName.Text == "") { validation = false; }
+            if (tbTaskStatus.Text == null || tbTaskStatus.Text == "") { validation = false; }
+
+            if(validation==true)
+            {
+                t.name = tbTaskName.Text;
+                t.leaderID = Convert.ToInt32(ddTaskLeader.SelectedValue);
+                t.status = tbTaskStatus.Text;
+                t.description = tbTaskDescription.Text;
+
+                foreach (ListItem liUser in cblUsers.Items)
+                {
+                    if(db.taskAssignments.Any(x => x.userID == Convert.ToInt32(liUser.Value) && x.taskID == Convert.ToInt32(lbTaskID.Text)))
+                    {
+                        taskAssignment tA = db.taskAssignments.First(x => x.userID == Convert.ToInt32(liUser.Value) && x.taskID == Convert.ToInt32(lbTaskID.Text));
+
+                        if (liUser.Selected == true) { tA.active = true; }
+                        else { tA.active = false; }
+
+                    }
+                    else
+                    {
+                        bool active;
+                        if (liUser.Selected == true) {active = true; }
+                        else { active = false; }
+
+
+                        taskAssignment tA = new taskAssignment
+                        {
+                            userID = Convert.ToInt32(liUser.Value),
+                            taskID = Convert.ToInt32(lbTaskID.Text),
+                            active = active
+                        };
+
+                        db.taskAssignments.InsertOnSubmit(tA);
+                    }
+
+
+                }
+
+                lbTaskSaveSucces.Text = "Editing was succesful!";
+
+                db.SubmitChanges();
+            }
+            else
+            {
+                lbTaskSaveSucces.Text = "Incorrect data!";
+                tbTaskStatus.Text = t.status;
+                tbTaskDescription.Text = t.description;
+            }
+
+
         }
         else
         {
             lbTaskSaveSucces.Text = "Incorrect data!";
+
         }
     }
 }

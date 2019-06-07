@@ -41,12 +41,12 @@ public partial class Registration : System.Web.UI.Page
         }
         else if(tbPassword.Text.Length<6 || tbPassword.Text.Length >32)
         {
-            lbErrorMessage.Text = "Your Password is too short/too long";
+            lbErrorMessage.Text = "Your password is too short/too long";
             Clear(1);
         }
         else if (tbPassword.Text != tbConfirmPassword.Text)
         {
-            lbErrorMessage.Text = "Passwords doesn't match";
+            lbErrorMessage.Text = "Passwords don't match";
             Clear(1);
         }
         else if(tbLogin.Text.Length >16)

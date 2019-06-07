@@ -75,9 +75,10 @@
                            
                             <a class="list-group-item list-group-item-action tablist" id="bDefault"   href="Default.aspx" role="tab" aria-controls="default">Default</a>
                             <a class="list-group-item list-group-item-action " id="bMyProjects"  href="MyProjects.aspx" role="tab" >My Projects</a>
+                            <a class="list-group-item list-group-item-action " id="bMyTasks"  href="MyTasks.aspx" role="tab" >My Tasks</a>
                             <a class="list-group-item list-group-item-action"  id="bProjectCreation"  href="ProjectCreation.aspx" type="button" role="tab" >New Project</a>
                              <a class="list-group-item list-group-item-action"  id="bTaskCreation"  href="TaskCreation.aspx" type="button" role="tab" >New Task</a>
-                            <a class="list-group-item list-group-item-action"  id="bStats"  href="Stats.aspx" type="button" role="tab" >Raport</a>
+                            <a class="list-group-item list-group-item-action"  id="bStats"  href="Stats.aspx" type="button" role="tab" >Report</a>
                             
                        </div> </asp:Panel>
                         </div>
