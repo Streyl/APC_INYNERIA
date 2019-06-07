@@ -1,14 +1,18 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
+using System.Drawing;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 using System.Xml.Linq;
+
 
 public partial class Stats : System.Web.UI.Page
 {
@@ -16,12 +20,6 @@ public partial class Stats : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        var Data = (from ob1 in BaseDB.projects
-                    select ob1);
-        GridViewData.DataSource = Data;
-        ChartProject.DataSource = Data;
-        ChartProject.DataBind();
-        GridViewData.DataBind();
 
         var Data1 = (from ob in BaseDB.tasks
                      select ob);
@@ -49,6 +47,13 @@ public partial class Stats : System.Web.UI.Page
 
         pdfDoc.Open();
         htmlParser.Parse(sr);
+
+        
+        var chartimage = new MemoryStream();
+        ChartProject.SaveImage(chartimage, ChartImageFormat.Png);
+        iTextSharp.text.Image Chart_image = iTextSharp.text.Image.GetInstance(chartimage.GetBuffer());
+
+        pdfDoc.Add(Chart_image);
         pdfDoc.Close();
 
         Response.Write(pdfDoc);
@@ -74,6 +79,7 @@ public partial class Stats : System.Web.UI.Page
         HtmlTextWriter hw1 = new HtmlTextWriter(sw1);
 
         PanelPDF2.RenderControl(hw1);
+       
 
         StringReader sr1 = new StringReader(sw1.ToString());
         Document pdfDoc1 = new Document(PageSize.A4, 10f, 10f, 100f, 10f);
@@ -82,14 +88,13 @@ public partial class Stats : System.Web.UI.Page
 
         pdfDoc1.Open();
         htmlParser.Parse(sr1);
+
         pdfDoc1.Close();
 
         Response.Write(pdfDoc1);
         Response.End();
     }
 
-    protected void LinqDataSource1_Selecting(object sender, LinqDataSourceSelectEventArgs e)
-    {
 
-    }
+
 }
