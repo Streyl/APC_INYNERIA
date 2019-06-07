@@ -49,6 +49,13 @@ public partial class TaskCreation : System.Web.UI.Page
                 
             };
 
+            //project p = new project
+            //{
+            //    number_of_tasks = +1
+            //};
+
+            //dbb.projects.InsertOnSubmit(p);
+
             dbb.tasks.InsertOnSubmit(t);
             dbb.SubmitChanges();
         }
