@@ -48,16 +48,23 @@ public partial class TaskCreation : System.Web.UI.Page
                 projectID =  Convert.ToInt32( ddlProject.SelectedValue)
                 
             };
+            //int number = dbb.projects;
+            //project pp = dbb.projects.Single(p => p.id == (Session["Project"] as project).id);
+            //pp.number_of_tasks =+1;
 
-            //project p = new project
-            //{
-            //    number_of_tasks = +1
-            //};
+            ////project p = new project
+            ////{
+            ////    number_of_tasks = +1
+            ////};
 
-            //dbb.projects.InsertOnSubmit(p);
+            ////dbb.projects.InsertOnSubmit(p);
+            
 
-            dbb.tasks.InsertOnSubmit(t);
-            dbb.SubmitChanges();
+            //dbb.tasks.InsertOnSubmit(t);
+
+            //dbb.SubmitChanges();
+
+            //Session["Project"] = pp;
         }
     }
 

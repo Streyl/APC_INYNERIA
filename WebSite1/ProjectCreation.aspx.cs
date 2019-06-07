@@ -34,7 +34,7 @@ public partial class ProjectCreation : System.Web.UI.Page
             LinqDataClassesDataContext db = new LinqDataClassesDataContext();
 
             var userID = (from u in db.users
-                          where u.name == (string)Session["UserLogIn"]
+                          where u.login == (string)Session["UserLogIn"]
                           select u.id).First();
 
             project Project = new project
